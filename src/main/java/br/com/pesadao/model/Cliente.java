@@ -31,7 +31,7 @@ public class Cliente implements Serializable {
 	private static final long serialVersionUID = 6876859919594365877L;
 	private Integer id;
 	private String nomeCliente;
-	private SexoCliente sexoCliente;
+	private Sexo sexoCliente;
 	private String idadeCliente;
 	private String cpfCliente;
 	private String enderecoCliente;
@@ -66,10 +66,10 @@ public class Cliente implements Serializable {
 	 * @param lastUpdateCliente
 	 * @param active
 	 */
-	public Cliente(Integer id, String nomeCliente, SexoCliente sexoCliente, String idadeCliente,
+	public Cliente(Integer id, String nomeCliente, Sexo sexoCliente, String idadeCliente,
 			String cpfCliente, String enderecoCliente, String bairroCliente, String cidadeCliente,
 			Estado ufCliente, String telefoneCliente, String celularCliente, String emailCliente,
-			Date dataCadastroCliente, Date lastUpdateCliente, boolean active) {
+			Date dataCadastroCliente, Date lastUpdate, boolean active) {
 		super();
 		this.id = id;
 		this.nomeCliente = nomeCliente;
@@ -122,14 +122,14 @@ public class Cliente implements Serializable {
 	 * @return the sexoCliente
 	 */
 	@Enumerated(EnumType.STRING)
-	public SexoCliente getSexoCliente() {
+	public Sexo getSexoCliente() {
 		return sexoCliente;
 	}
 
 	/**
 	 * @param sexoCliente the sexoCliente to set
 	 */
-	public void setSexoCliente(SexoCliente sexoCliente) {
+	public void setSexoCliente(Sexo sexoCliente) {
 		this.sexoCliente = sexoCliente;
 	}
 
