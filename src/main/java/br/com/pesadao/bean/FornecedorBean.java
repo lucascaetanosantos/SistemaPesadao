@@ -29,7 +29,6 @@ public class FornecedorBean {
 	private Fornecedor fornecedor = new Fornecedor();
 	private List<Estado> estados = Arrays.asList(Estado.values());
 	private List<Fornecedor> fornecedores = new ArrayList<Fornecedor>();
-	public Thread currentThread;
 
 	public FornecedorBean() {
 		fornecedores = new FornecedorDao().listarFornecedores();
@@ -39,8 +38,8 @@ public class FornecedorBean {
 		new FornecedorDao().salvar(fornecedor);
 		fornecedores = new FornecedorDao().listarFornecedores();
 		fornecedor = new Fornecedor();
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Fornecedor salvo com sucesso!"));
-		return "fornecedorlist_template";
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Fornecedor cadastrado com sucesso!"));
+		return "fornecedorlist";
 	}
 
 	public String editar(Fornecedor fornecedor) {
@@ -57,7 +56,47 @@ public class FornecedorBean {
 	public void prepararModel(Fornecedor fornecedor) {
 		this.fornecedor = fornecedor;
 	}
-	
-	
+
+	/**
+	 * @return the fornecedor
+	 */
+	public Fornecedor getFornecedor() {
+		return fornecedor;
+	}
+
+	/**
+	 * @param fornecedor the fornecedor to set
+	 */
+	public void setFornecedor(Fornecedor fornecedor) {
+		this.fornecedor = fornecedor;
+	}
+
+	/**
+	 * @return the estados
+	 */
+	public List<Estado> getEstados() {
+		return estados;
+	}
+
+	/**
+	 * @param estados the estados to set
+	 */
+	public void setEstados(List<Estado> estados) {
+		this.estados = estados;
+	}
+
+	/**
+	 * @return the fornecedores
+	 */
+	public List<Fornecedor> getFornecedores() {
+		return fornecedores;
+	}
+
+	/**
+	 * @param fornecedores the fornecedores to set
+	 */
+	public void setFornecedores(List<Fornecedor> fornecedores) {
+		this.fornecedores = fornecedores;
+	}
 
 }
