@@ -43,18 +43,18 @@ public class ClienteBean {
 		clientes = new ClienteDao().listarClientes();
 		cliente = new Cliente();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cliente cadastrado com sucesso!"));
-		return "clientelist";
+		return "cliente";
 	}
 
 	public String editar(Cliente cliente) {
 		this.cliente = cliente;
-		return "clientecad";
+		return "cliente";
 	}
 	
 	public String excluir() {
 		this.cliente.setActive(false);
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cliente excluído com sucesso!"));
-		return "clientelist";
+		return "cliente";
 	}
 
 	public void prepararModel(Cliente cliente) {
