@@ -28,7 +28,7 @@ public class Cliente implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 6876859919594365877L;
+	private static final long serialVersionUID = -4736126023115336412L;
 	private Integer id;
 	private String nomeCliente;
 	private Sexo sexoCliente;

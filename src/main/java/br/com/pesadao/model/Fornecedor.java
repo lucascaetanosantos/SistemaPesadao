@@ -25,7 +25,7 @@ public class Fornecedor implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -9146188231625778022L;
+	private static final long serialVersionUID = 3169248106609063597L;
 	private Integer id;
 	private String nomeFornecedor;
 	private String fantasiaFornecedor;

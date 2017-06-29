@@ -23,7 +23,7 @@ public class Estoque implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 6937531343113952335L;
+	private static final long serialVersionUID = 4191167450429854103L;
 	private Integer id;
 	private Produto produtoEstoque;
 	private int quantidadeEstoque;

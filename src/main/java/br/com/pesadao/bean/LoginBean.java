@@ -10,7 +10,6 @@ import javax.faces.context.FacesContext;
 import br.com.pesadao.model.Usuario;
 import br.com.pesadao.model.Usuarios;
 
-
 @ManagedBean
 @SessionScoped
 public class LoginBean {

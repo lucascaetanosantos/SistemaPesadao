@@ -9,7 +9,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import br.com.pesadao.model.ItemCompra;
-import br.com.pesadao.model.ItemVenda;
 
 
 /**
