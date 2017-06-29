@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="UTF-8" />
+	<title>PESADÃO - <ui:insert name="titulo" /></title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:growl/>
+		<p:menubar>
+			<p:submenu label="Cadastrar" icon="ui-icon-plusthick">
+				<p:menuitem value="Cliente" outcome="clientecad" />
+				<p:separator />
+				<p:menuitem value="Fornecedor" outcome="fornecedorcad" />
+				<p:separator />
+				<p:menuitem value="Produto" outcome="produtocad" />
+				<p:separator />
+				<p:menuitem value="Pedido Venda" outcome="pedidovendacad" />
+				<p:separator/>
+				<p:menuitem value="Pedido Compra" outcome="pedidocompracad" />
+				<p:separator/>
+				<p:menuitem value="Contas a Pagar" outcome="contaspagarcad" />
+				<p:separator/>
+				<p:menuitem value="Contas a Receber" outcome="contasrecebercad" />
+			</p:submenu>
+
+			<p:submenu label="Listar" icon="ui-icon-document">
+				<p:menuitem value="Fornecedor" outcome="fornecedorlist" />
+				<p:separator />
+				<p:menuitem value="Cliente" outcome="clientelist" />
+				<p:separator />
+				<p:menuitem value="Produto" outcome="produtolist" />
+				<p:separator />
+				<p:menuitem value="Estoque" outcome="estoquelist" />
+				<p:separator/>
+				<p:menuitem value="Compra" outcome="contasreceberlist"/>
+				<p:separator/>
+				<p:menuitem value="Venda" outcome="contasreceberlist"/>
+				<p:separator/>
+				<p:menuitem value="Contas a Receber" outcome="contasreceberlist"/>
+				<p:separator/>
+				<p:menuitem value="Contas a Pagar" outcome="contaspagarlist"/>
+			</p:submenu>
+			
+			<f:facet name="options">
+				<p:commandButton icon="ui-icon-extlink"
+					value="Logout"
+					action="#{loginBean.logout}" />
+			</f:facet>
+		</p:menubar>
+		<br />
+
+	</h:form>
+	<ui:insert name="principal"></ui:insert>
+	<p style="font-family: verdana; color: red; text-align: right; font-size: 12px; bottom: 0px; position: relative;">
+		Pesadão Life Style, todos os direitos reservados</p>
+</h:body>
+</html>
