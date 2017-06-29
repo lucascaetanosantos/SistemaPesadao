@@ -30,7 +30,7 @@ public class Produto implements Serializable {
 	private String marcaProduto;
 	private String composicaoProduto;
 	private String corProduto;
-	private boolean status = true;
+	private boolean active = true;
 	private Date lastUpdate = new Date();
 
 	/**
@@ -51,7 +51,7 @@ public class Produto implements Serializable {
 	 * @param lastUpdate
 	 */
 	public Produto(Integer id, Date cadastroProduto, String descricaoProduto, String marcaProduto,
-			String composicaoProduto, String corProduto, boolean status, Date lastUpdate) {
+			String composicaoProduto, String corProduto, boolean active, Date lastUpdate) {
 		super();
 		this.id = id;
 		this.cadastroProduto = cadastroProduto;
@@ -59,7 +59,7 @@ public class Produto implements Serializable {
 		this.marcaProduto = marcaProduto;
 		this.composicaoProduto = composicaoProduto;
 		this.corProduto = corProduto;
-		this.status = status;
+		this.active = active;
 		this.lastUpdate = lastUpdate;
 	}
 
@@ -151,17 +151,17 @@ public class Produto implements Serializable {
 	}
 
 	/**
-	 * @return the status
+	 * @return the active
 	 */
-	public boolean isStatus() {
-		return status;
+	public boolean isActive() {
+		return active;
 	}
 
 	/**
 	 * @param status the status to set
 	 */
-	public void setStatus(boolean status) {
-		this.status = status;
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	/**
@@ -217,6 +217,6 @@ public class Produto implements Serializable {
 	public String toString() {
 		return "Produto [id=" + id + ", cadastroProduto=" + cadastroProduto + ", descricaoProduto=" + descricaoProduto
 				+ ", marcaProduto=" + marcaProduto + ", composicaoProduto=" + composicaoProduto + ", corProduto="
-				+ corProduto + ", status=" + status + ", lastUpdate=" + lastUpdate + "]";
+				+ corProduto + ", active=" + active + ", lastUpdate=" + lastUpdate + "]";
 	}
 }

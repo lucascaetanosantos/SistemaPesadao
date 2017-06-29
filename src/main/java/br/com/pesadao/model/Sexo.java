@@ -1,6 +1,6 @@
 package br.com.pesadao.model;
 
-public enum SexoCliente {
+public enum Sexo {
 
 	MASCULINO("Masculino", "M"), 
 	FEMININO("Feminino", "F");
@@ -8,7 +8,7 @@ public enum SexoCliente {
 	private String label;
 	private String abrev;
 
-	private SexoCliente(String label,String abrev){
+	private Sexo(String label,String abrev){
 		this.label=label;
 		this.abrev=abrev;
 	}
