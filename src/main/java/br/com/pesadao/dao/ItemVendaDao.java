@@ -31,4 +31,13 @@ public class ItemVendaDao {
 		Query query = entityManager.createQuery("from ItemVenda  Order By id");
 		return query.getResultList();
 	}
+	
+	public void excluir(ItemVenda itemVenda) {
+		EntityManager entityManager = JPAUtil.getEntityManager();
+		entityManager.getTransaction().begin();
+		itemVenda = entityManager.merge(itemVenda);
+		entityManager.remove(itemVenda);
+		entityManager.getTransaction().commit();
+		entityManager.close();
+	}
 }
