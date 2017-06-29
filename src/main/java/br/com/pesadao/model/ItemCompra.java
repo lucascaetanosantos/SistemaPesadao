@@ -28,7 +28,7 @@ public class ItemCompra implements Serializable {
 	private static final long serialVersionUID = 5175850452290987018L;
 	private Integer id;
 	private Produto produtoItemCompra;
-	private Integer pedidoItemCompra;
+	private PedidoCompra pedidoItemCompra;
 	private Integer quantidadeItemCompra;
 	private double valorItemCompra;
 	private Date dataCadastroItemCompra = new Date();
@@ -48,7 +48,7 @@ public class ItemCompra implements Serializable {
 	 * @param valorItemCompra
 	 * @param dataCadastroItemCompra
 	 */
-	public ItemCompra(Integer id, br.com.pesadao.model.Produto produtoItemCompra, Integer pedidoItemCompra,
+	public ItemCompra(Integer id, Produto produtoItemCompra, PedidoCompra pedidoItemCompra,
 			Integer quantidadeItemCompra, double valorItemCompra, Date dataCadastroItemCompra) {
 		super();
 		this.id = id;
@@ -69,8 +69,7 @@ public class ItemCompra implements Serializable {
 	}
 
 	/**
-	 * @param id
-	 *            the id to set
+	 * @param id the id to set
 	 */
 	public void setId(Integer id) {
 		this.id = id;
@@ -86,8 +85,7 @@ public class ItemCompra implements Serializable {
 	}
 
 	/**
-	 * @param produtoItemCompra
-	 *            the produtoItemCompra to set
+	 * @param produtoItemCompra the produtoItemCompra to set
 	 */
 	public void setProdutoItemCompra(Produto produtoItemCompra) {
 		this.produtoItemCompra = produtoItemCompra;
@@ -96,15 +94,16 @@ public class ItemCompra implements Serializable {
 	/**
 	 * @return the pedidoItemCompra
 	 */
-	public Integer getPedidoItemCompra() {
+	@ManyToOne
+	@JoinColumn
+	public PedidoCompra getPedidoItemCompra() {
 		return pedidoItemCompra;
 	}
 
 	/**
-	 * @param pedidoItemCompra
-	 *            the pedidoItemCompra to set
+	 * @param pedidoItemCompra the pedidoItemCompra to set
 	 */
-	public void setPedidoItemCompra(Integer pedidoItemCompra) {
+	public void setPedidoItemCompra(PedidoCompra pedidoItemCompra) {
 		this.pedidoItemCompra = pedidoItemCompra;
 	}
 
@@ -116,8 +115,7 @@ public class ItemCompra implements Serializable {
 	}
 
 	/**
-	 * @param quantidadeItemCompra
-	 *            the quantidadeItemCompra to set
+	 * @param quantidadeItemCompra the quantidadeItemCompra to set
 	 */
 	public void setQuantidadeItemCompra(Integer quantidadeItemCompra) {
 		this.quantidadeItemCompra = quantidadeItemCompra;
@@ -131,8 +129,7 @@ public class ItemCompra implements Serializable {
 	}
 
 	/**
-	 * @param valorItemCompra
-	 *            the valorItemCompra to set
+	 * @param valorItemCompra the valorItemCompra to set
 	 */
 	public void setValorItemCompra(double valorItemCompra) {
 		this.valorItemCompra = valorItemCompra;
@@ -147,16 +144,13 @@ public class ItemCompra implements Serializable {
 	}
 
 	/**
-	 * @param dataCadastroItemCompra
-	 *            the dataCadastroItemCompra to set
+	 * @param dataCadastroItemCompra the dataCadastroItemCompra to set
 	 */
 	public void setDataCadastroItemCompra(Date dataCadastroItemCompra) {
 		this.dataCadastroItemCompra = dataCadastroItemCompra;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
+	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -167,9 +161,7 @@ public class ItemCompra implements Serializable {
 		return result;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
+	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -189,9 +181,7 @@ public class ItemCompra implements Serializable {
 		return true;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
+	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override

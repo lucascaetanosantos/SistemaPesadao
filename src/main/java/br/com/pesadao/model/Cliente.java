@@ -42,7 +42,7 @@ public class Cliente implements Serializable {
 	private String celularCliente;
 	private String emailCliente;
 	private Date dataCadastroCliente = new Date();
-	private Date lastUpdateCliente = new Date();
+	private Date lastUpdate = new Date();
 	private boolean active = true;
 	
 	public Cliente() {
@@ -84,7 +84,7 @@ public class Cliente implements Serializable {
 		this.celularCliente = celularCliente;
 		this.emailCliente = emailCliente;
 		this.dataCadastroCliente = dataCadastroCliente;
-		this.lastUpdateCliente = lastUpdateCliente;
+		this.lastUpdate = lastUpdate;
 		this.active = active;
 	}
 
@@ -280,15 +280,15 @@ public class Cliente implements Serializable {
 	 * @return the lastUpdateCliente
 	 */
 	@Temporal(TemporalType.DATE)
-	public Date getLastUpdateCliente() {
-		return lastUpdateCliente;
+	public Date getLastUpdate() {
+		return lastUpdate;
 	}
 
 	/**
 	 * @param lastUpdateCliente the lastUpdateCliente to set
 	 */
-	public void setLastUpdateCliente(Date lastUpdateCliente) {
-		this.lastUpdateCliente = lastUpdateCliente;
+	public void setLastUpdate(Date lastUpdate) {
+		this.lastUpdate = lastUpdate;
 	}
 
 	/**
@@ -346,7 +346,7 @@ public class Cliente implements Serializable {
 				+ ", bairroCliente=" + bairroCliente + ", cidadeCliente=" + cidadeCliente + ", ufCliente=" + ufCliente
 				+ ", telefoneCliente=" + telefoneCliente + ", celularCliente=" + celularCliente + ", emailCliente="
 				+ emailCliente + ", dataCadastroCliente=" + dataCadastroCliente + ", lastUpdateCliente="
-				+ lastUpdateCliente + ", active=" + active + "]";
+				+ lastUpdate + ", active=" + active + "]";
 	}
 	
 }
