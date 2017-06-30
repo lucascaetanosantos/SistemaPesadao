@@ -10,15 +10,22 @@
 </h:head>
 <h:body>
 	<h:form>
-		<p:growl/>
-		
-			
+
+		<p:menubar>
+			<p:menuitem value="Cliente" outcome="fornecedor" icon="ui-icon-person" />
+			<p:menuitem value="Fornecedor" outcome="cliente" icon="ui-icon-person" />
+			<p:menuitem value="Estoque" outcome="cliente" icon="ui-icon-clipboard" />
+			<p:menuitem value="Produto" outcome="cliente" icon="ui-icon-tag" />
+			<p:menuitem value="Compra" outcome="cliente" icon="ui-icon-cart" />
+			<p:menuitem value="Venda" outcome="cliente" icon="ui-icon-suitcase" />
+			<p:menuitem value="Contas a pagar" outcome="cliente" icon="ui-icon-arrowthick-1-e" />
+			<p:menuitem value="Contas a receber" outcome="cliente" icon="ui-icon-arrowthick-1-w" />
+
 			<f:facet name="options">
-				<p:commandButton icon="ui-icon-extlink"
-					value="Logout"
-					action="#{loginBean.logout}" />
+				<p:commandButton icon="ui-icon-extlink" value="Logout"
+					action="#{loginBean.logout}"/>
 			</f:facet>
-		<br />
+		</p:menubar>
 
 	</h:form>
 	<ui:insert name="principal"></ui:insert>

@@ -17,25 +17,21 @@
 					oncomplete="PF('dialogCadastroFornecedor').show();" />
 
 				<p:confirmDialog widgetVar="dialogCadastroFornecedor"
-					header="Cadastrar Fornecedor">
+					header="Cadastrar Fornecedor" icon="ui-icon-blank">
 
 					<h:panelGrid columns="2" cellpadding="5">
-						<p:outputLabel for="nomeFornecedor" value="Nome: " />
-						<p:inputText id="nomeFornecedor" type="text"
-							title="NomeFornecedor" required="true"
-							requiredMessage="Preencha o campo Nome."
+						<p:outputLabel for="razaoSocial" value="Razão Social: " />
+						<p:inputText id="razaoSocial" type="text" title="Nome"
+							required="true" requiredMessage="Preencha o campo razão social."
 							value="#{fornecedorBean.fornecedor.nomeFornecedor}" />
 
-						<p:outputLabel for="fantasiaFornecedor"
-							value="Fantasia Fornecedor: " />
-						<p:inputText id="fantasiaFornecedor" type="text"
-							title="FantasiaFornecedor" required="true"
-							requiredMessage="Preencha o campo Fantasia."
+						<p:outputLabel for="nomeFantasia" value="Nome fantasia: " />
+						<p:inputText id="nomeFantasia" type="text" title="nomeFantasia"
+							required="true" requiredMessage="Preencha o campo nome fantasia."
 							value="#{fornecedorBean.fornecedor.fantasiaFornecedor}" />
 
-						<p:outputLabel for="cnpjFornecedor" value="Cnpj Fornecedor: " />
-						<p:inputText id="cnpjFornecedor" type="text"
-							title="Cnpj Fornecedor" required="true"
+						<p:outputLabel for="cnpj" value="CNPJ: " />
+						<p:inputText id="cnpj" type="text" title="cnpj" required="true"
 							requiredMessage="Preencha o campo CNPJ"
 							value="#{fornecedorBean.fornecedor.cnpjFornecedor}" />
 
@@ -52,48 +48,43 @@
 							requiredMessage="Preencha o campo CNPJ"
 							value="#{fornecedorBean.fornecedor.enderecoFornecedor}" />
 
-						<p:outputLabel for="bairroFornecedor" value="Bairro: " />
-						<p:inputText id="bairroFornecedor" type="text"
-							title="Bairro Fornecedor" required="true"
-							requiredMessage="Preencha o campo Bairro"
+						<p:outputLabel for="bairro" value="Bairro: " />
+						<p:inputText id="bairro" type="text" title="Bairro"
+							required="true" requiredMessage="Preencha o campo bairro"
 							value="#{fornecedorBean.fornecedor.bairroFornecedor}" />
 
-						<p:outputLabel for="cidadeFornecedor" value="Cidade: " />
-						<p:inputText id="cidadeFornecedor" type="text"
-							title="Cidade Fornecedor" required="true"
-							requiredMessage="Preencha o campo Cidade"
+						<p:outputLabel for="cidade" value="Cidade: " />
+						<p:inputText id="cidade" type="text" title="cidade"
+							required="true" requiredMessage="Preencha o campo cidade"
 							value="#{fornecedorBean.fornecedor.cidadeFornecedor}" />
 
-						<p:outputLabel for="complementoFornecedor" value="Complemento: " />
-						<p:inputText id="complementoFornecedor" type="text"
-							title="Complemento Fornecedor" required="true"
-							requiredMessage="Preencha o campo Complemento"
+						<p:outputLabel for="complemento" value="Complemento: " />
+						<p:inputText id="complemento" type="text" title="complemento"
+							required="true" requiredMessage="Preencha o campo complemento"
 							value="#{fornecedorBean.fornecedor.complementoFornecedor}" />
 
 
 						<p:outputLabel for="telefonePrincipal" value="Telefon principal: " />
 						<p:inputText id="telefonePrincipal" type="text"
-							title="Telefone Principal" required="true"
-							requiredMessage="Preencha o campo Telefone Principal"
+							title="telefonePrincipal" required="true"
+							requiredMessage="Preencha o campo telefone principal"
 							value="#{fornecedorBean.fornecedor.telefonePrincipalFornecedor}" />
 
 						<p:outputLabel for="telefoneAlternativo"
 							value="Telefone alternativo: " />
 						<p:inputText id="telefoneAlternativo" type="text"
-							title="Telefone alternativo" required="true"
-							requiredMessage="Preencha o campo Telefone Alternativo"
+							title="telefoneAlternativo" required="true"
+							requiredMessage="Preencha o campo telefone alternativo"
 							value="#{fornecedorBean.fornecedor.telefoneAlternativoFornecedor}" />
 
-						<p:outputLabel for="ieFornecedor" value="Inscrição Estadual: " />
-						<p:inputText id="ieFornecedor" type="text"
-							title="Inscrição Estadual Fornecedor" required="true"
-							requiredMessage="Preencha o campo IE"
+						<p:outputLabel for="ie" value="Inscrição Estadual: " />
+						<p:inputText id="ie" type="text" title="ie" required="true"
+							requiredMessage="Preencha o campo incrição estadual"
 							value="#{fornecedorBean.fornecedor.ieFornecedor}" />
 
-						<p:outputLabel for="imFornecedor" value="Inscrição Municipal: " />
-						<p:inputText id="imFornecedor" type="text"
-							title="Inscrição Estadual Fornecedor" required="true"
-							requiredMessage="Preencha o campo IM"
+						<p:outputLabel for="im" value="Inscrição Municipal: " />
+						<p:inputText id="im" type="text" title="im" required="true"
+							requiredMessage="Preencha o campo inscrição municipal"
 							value="#{fornecedorBean.fornecedor.imFornecedor}" />
 
 						<p:outputLabel for="dataFundacao" value="Data de Fundação: " />
@@ -112,12 +103,12 @@
 								itemLabel="#{estado.label}" itemValue="#{estado}" />
 						</p:selectOneMenu>
 
-						<p:outputLabel for="emailFornecedor" value="Email: " />
-						<p:inputText id="emailFornecedor" type="text" title="Email"
-							required="true" requiredMessage="Preencha o campo IM"
+						<p:outputLabel for="email" value="Email: " />
+						<p:inputText id="email" type="text" title="Email" required="true"
+							requiredMessage="Preencha o campo email"
 							value="#{fornecedorBean.fornecedor.emailFornecedor}" />
 					</h:panelGrid>
-					
+
 					<p:commandButton value="Limpar" type="reset" />
 					<p:commandButton value="Salvar" action="#{fornecedorBean.salvar}"
 						update="listarFornecedor cadastraFornecedor" icon="ui-icon-disk"
@@ -134,42 +125,21 @@
 			<h:form id="listarFornecedor">
 				<p:dataTable id="tabelaFornecedor" var="fornecedor"
 					value="#{fornecedorBean.fornecedores}"
-					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
 					paginator="true" paginatorPosition="bottom" rows="10"
-					style="margin-bottom:20px">
+					style="margin-bottom:20px" scrollable="true">
 
-					<f:facet name="{Exporters}">
-						<h:commandLink>
-							<p:graphicImage name="/demo/images/excel.png" width="24" />
-							<p:dataExporter type="xls" target="tbl" fileName="fornecedor" />
-						</h:commandLink>
-
-						<h:commandLink>
-							<p:graphicImage name="/demo/images/pdf.png" width="24" />
-							<p:dataExporter type="pdf" target="tbl" fileName="fornecedor" />
-						</h:commandLink>
-
-						<h:commandLink>
-							<p:graphicImage name="/demo/images/csv.png" width="24" />
-							<p:dataExporter type="csv" target="tbl" fileName="fornecedor" />
-						</h:commandLink>
-
-						<h:commandLink>
-							<p:graphicImage name="/demo/images/xml.png" width="24" />
-							<p:dataExporter type="xml" target="tbl" fileName="fornecedor" />
-						</h:commandLink>
-					</f:facet>
 
 					<p:column>
 						<f:facet name="header">
-							<h:outputText value="Nome" />
+							<h:outputText value="Razão social" />
 						</f:facet>
 						<h:outputText value="#{fornecedor.nomeFornecedor}" />
 					</p:column>
 
 					<p:column>
 						<f:facet name="header">
-							<h:outputText value="Fantasia" />
+							<h:outputText value="Nome fantasia" />
 						</f:facet>
 						<h:outputText value="#{fornecedor.fantasiaFornecedor}" />
 					</p:column>
@@ -183,16 +153,16 @@
 
 					<p:column>
 						<f:facet name="header">
-							<h:outputText value="Data de cadastro" />
+							<h:outputText value="UF" />
 						</f:facet>
-						<h:outputText value="#{fornecedor.dataCadastroFornecedor}" />
+						<h:outputText value="#{fornecedor.ufFornecedor}" />
 					</p:column>
 
 					<p:column>
 						<f:facet name="header">
-							<h:outputText value="Endereco" />
+							<h:outputText value="Cidade" />
 						</f:facet>
-						<h:outputText value="#{fornecedor.enderecoFornecedor}" />
+						<h:outputText value="#{fornecedor.cidadeFornecedor}" />
 					</p:column>
 
 					<p:column>
@@ -204,9 +174,9 @@
 
 					<p:column>
 						<f:facet name="header">
-							<h:outputText value="Cidade" />
+							<h:outputText value="Endereco" />
 						</f:facet>
-						<h:outputText value="#{fornecedor.cidadeFornecedor}" />
+						<h:outputText value="#{fornecedor.enderecoFornecedor}" />
 					</p:column>
 
 					<p:column>
@@ -246,20 +216,6 @@
 
 					<p:column>
 						<f:facet name="header">
-							<h:outputText value="Data de fundação" />
-						</f:facet>
-						<h:outputText value="#{fornecedor.dataFundacaoFornecedor}" />
-					</p:column>
-
-					<p:column>
-						<f:facet name="header">
-							<h:outputText value="UF" />
-						</f:facet>
-						<h:outputText value="#{fornecedor.ufFornecedor}" />
-					</p:column>
-
-					<p:column>
-						<f:facet name="header">
 							<h:outputText value="Email" />
 						</f:facet>
 						<h:outputText value="#{fornecedor.emailFornecedor}" />
@@ -267,9 +223,32 @@
 
 					<p:column>
 						<f:facet name="header">
+							<h:outputText value="Data de fundação" />
+						</f:facet>
+						<h:outputText value="#{fornecedor.dataFundacaoFornecedor}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
 							<h:outputText value="Ultima atualização" />
 						</f:facet>
 						<h:outputText value="#{fornecedor.lastUpdate}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Data de cadastro" />
+						</f:facet>
+						<h:outputText value="#{fornecedor.dataCadastroFornecedor}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Editar" />
+						</f:facet>
+						<p:commandButton icon=" ui-icon-pencil" update="@form"
+							actionListener="#{clienteBean.prepararModel(cliente)}"
+							oncomplete="PF('dialogCadastroFornecedor').show();" />
 					</p:column>
 
 					<p:column>
