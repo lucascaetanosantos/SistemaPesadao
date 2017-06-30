@@ -44,7 +44,11 @@ public class FornecedorBean {
 
 	public String editar(Fornecedor fornecedor) {
 		this.fornecedor = fornecedor;
-		return "fornecedorlist";
+		return "fornecedor";
+	}
+	
+	public void limpar(){
+		fornecedor = new Fornecedor();
 	}
 
 	public String excluir() {
