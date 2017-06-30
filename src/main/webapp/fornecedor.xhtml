@@ -32,7 +32,7 @@
 							value="#{fornecedorBean.fornecedor.fantasiaFornecedor}" />
 
 						<p:outputLabel for="cnpj" value="CNPJ: " />
-						<p:inputMask id="cnpj" mask="999.999.999-99" title="CNPJ"
+						<p:inputMask id="cnpj" mask="99.999.999/9999-99" title="CNPJ"
 							required="true" requiredMessage="Preencha o campo CNPJ."
 							value="#{fornecedorBean.fornecedor.cnpjFornecedor}">
 						</p:inputMask>
@@ -100,14 +100,7 @@
 						<p:calendar id="dataFundacao"
 							value="#{fornecedorBean.fornecedor.dataFundacaoFornecedor}"
 							pattern="dd/MM/yyyy"
-							maxdate="#{fornecedorBean.fornecedor.dataFundacaoFornecedor}"
-							required="true" />
-
-						<p:outputLabel for="cadastro" value="Data de Cadastro: " />
-						<p:calendar id="cadastro"
-							value="#{fornecedorBean.fornecedor.dataCadastroFornecedor}"
-							pattern="dd/MM/yyyy"
-							maxdate="#{fornecedorBean.fornecedor.dataCadastroFornecedor}"
+							maxdate="#{fornecedorBean.dataAtual}"
 							required="true" />
 					</h:panelGrid>
 
@@ -124,7 +117,7 @@
 			</h:form>
 		</p:panel>
 
-		<p:panel header="Lista de Fornecedores">
+		<p:panel header="Lista de Fornecedores" scrollable="true" scrollHeight="300" style="width:100%"   resizableColumns="true"  lazy="true" >
 
 			<h:form id="listarFornecedor">
 				<p:dataTable id="tabelaFornecedor" var="fornecedor"

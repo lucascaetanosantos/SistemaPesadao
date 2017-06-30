@@ -3,7 +3,9 @@
  */
 package br.com.pesadao.bean;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -47,6 +49,10 @@ public class PedidoCompraBean {
 
 	public void prepararModel(PedidoCompra pedidoCompra) {
 		this.pedidoCompra = pedidoCompra;
+	}
+
+	public String getDataAtual() {
+		return new SimpleDateFormat("dd/MM/yyyy").format(new Date());
 	}
 	
 	/**

@@ -40,9 +40,11 @@ public class ItemCompraBean {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Item salvo com sucesso!"));
 		return "pedido_template";
 	}
-	
+
 	public void excluir() {
 		new ItemCompraDao().excluir(itemCompra);
+		new ItemCompraDao().salvar(itemCompra);
+		produtos = new ProdutoDao().listarProdutos();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Item excluído com sucesso!"));
 		itensCompra = new ItemCompraDao().listarItensCompra();
 	}
@@ -59,7 +61,8 @@ public class ItemCompraBean {
 	}
 
 	/**
-	 * @param itemCompra the itemCompra to set
+	 * @param itemCompra
+	 *            the itemCompra to set
 	 */
 	public void setItemCompra(ItemCompra itemCompra) {
 		this.itemCompra = itemCompra;
@@ -73,7 +76,8 @@ public class ItemCompraBean {
 	}
 
 	/**
-	 * @param itensCompra the itensCompra to set
+	 * @param itensCompra
+	 *            the itensCompra to set
 	 */
 	public void setItensCompra(List<ItemCompra> itensCompra) {
 		this.itensCompra = itensCompra;
@@ -87,7 +91,8 @@ public class ItemCompraBean {
 	}
 
 	/**
-	 * @param produtos the produtos to set
+	 * @param produtos
+	 *            the produtos to set
 	 */
 	public void setProdutos(List<Produto> produtos) {
 		this.produtos = produtos;
@@ -101,7 +106,8 @@ public class ItemCompraBean {
 	}
 
 	/**
-	 * @param pedidoCompraBean the pedidoCompraBean to set
+	 * @param pedidoCompraBean
+	 *            the pedidoCompraBean to set
 	 */
 	public void setPedidoCompraBean(PedidoVendaBean pedidoCompraBean) {
 		this.pedidoCompraBean = pedidoCompraBean;

@@ -93,12 +93,6 @@
 							value="#{clienteBean.cliente.emailCliente}">
 						</p:inputText>
 
-						<p:outputLabel for="cadastro" value="Data de Cadastro: " />
-						<p:calendar id="cadastro"
-							value="#{clienteBean.cliente.dataCadastroCliente}"
-							pattern="dd/MM/yyyy" maxdate="#{clienteBean.dataAtual}"
-							required="true" />
-
 					</h:panelGrid>
 
 					<p:commandButton value="Limpar" type="reset"

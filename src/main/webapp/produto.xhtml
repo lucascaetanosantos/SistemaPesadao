@@ -44,12 +44,6 @@
 							requiredMessage="Preencha o campo cor"
 							value="#{produtoBean.produto.corProduto}">
 						</p:inputText>
-						
-						<p:outputLabel for="cadastro" value="Data de Cadastro: " />
-						<p:calendar id="cadastro"
-							value="#{produtoBean.produto.dataCadastroProduto}"
-							pattern="dd/MM/yyyy" maxdate="#{produtoBean.dataAtual}"
-							required="true" />
 					</h:panelGrid>
 
 					<p:commandButton value="Limpar" type="reset"

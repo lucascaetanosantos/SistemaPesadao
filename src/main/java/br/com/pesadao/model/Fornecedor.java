@@ -390,6 +390,7 @@ public class Fornecedor implements Serializable {
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
+	
 	@Override
 	public String toString() {
 		return "Fornecedor [id=" + id + ", nomeFornecedor=" + nomeFornecedor + ", fantasiaFornecedor="
