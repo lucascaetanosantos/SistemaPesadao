@@ -8,20 +8,23 @@
 	<ui:define name="titulo"> Compra</ui:define>
 
 	<ui:define name="principal">
-		<h:form id="cadastraCompra">
+
+		<h:form id="cadastraPedidoCompra">
 			<p:panel header="Cadastrar pedido">
 				<p:growl id="growl" life="2000" />
+
 				<h:panelGrid columns="2" cellpadding="5">
 					<p:outputLabel for="fornecedor" value="Fornecedor: " />
-					<p:selectOneMenu id="fornecedor" value="#{pedidoCompraBean.pedidoCompra.fornecedorPedidoCompra}"
-						required="true" converter="fornecedorConverter"
-						style="vertical-align:middle;"
-						requiredMessage="Favor Selecionar o Cliente ">
-						<f:selectItem itemLabel="Selecione..." itemValue="#{null}"/>
-						<f:ajax event="change" execute="@this"
-							listener="#{pedidoCompraBean.salvar}" render="itenCompra"/>
-						<f:selectItems value="#{pedidoCompraBean.fornecedores}" var="fornecedor"
-							itemLabel="#{fornecedor.nomeFornecedor}" itemValue="#{fornecedor}"/>
+					<p:selectOneMenu id="fornecedor"
+						value="#{pedidoCompraBean.pedidoCompra.fornecedorPedidoCompra}"
+						converter="fornecedorConverter"
+						onchange="PF('blockItemCompra').hide()">
+						<f:selectItem itemLabel="Selecione..." itemValue="#{null}" />
+						<f:ajax event="change" execute="@form"
+							listener="#{pedidoCompraBean.salvar}" />
+						<f:selectItems value="#{pedidoCompraBean.fornecedores}"
+							var="fornecedor" itemLabel="#{fornecedor.nomeFornecedor}"
+							itemValue="#{fornecedor}" />
 					</p:selectOneMenu>
 
 					<p:outputLabel for="cadastro" value="Data de Cadastro: " />
@@ -30,16 +33,13 @@
 						pattern="dd/MM/yyyy" maxdate="#{pedidoCompraBean.dataAtual}"
 						required="true" />
 				</h:panelGrid>
+				<p:blockUI block="itemCompra" widgetVar="blockItemCompra"
+					blocked="true" />
 			</p:panel>
 		</h:form>
-		
-		<p:commandButton id="pnlBtn" value="Block Panel" type="button" onclick="PF('bui').show()"/>
-    <p:commandButton id="pnlBtn2" value="Unblock Panel" type="button" onclick="PF('bui').hide()"/>
- 
-    <p:blockUI block="itemVenda" widgetVar="blockItemVenda" blocked="true" />
 
-		<h:form id="itemVenda" rendered="pedidoCompra.id ne null">
-			<p:panel header="Itens de compra" scrollable="true"
+		<h:form id="itemCompra">
+			<p:panel header="Carrinho de compra" scrollable="true"
 				scrollHeight="300" style="width:100%" resizableColumns="true"
 				lazy="true">
 				<p:dataTable id="tabelaItemCompra" var="itemCompra"
@@ -93,10 +93,57 @@
 					widgetVar="dialogExcluirItemCompra">
 					<p:commandButton value="Sim" action="#{itemCompraBean.excluir}"
 						oncomplete="PF('dialogExcluirItemCompra').hide();"
-						update="listarFornecedor" />
+						update="itemCompra" />
 					<p:commandButton value="Não"
 						oncomplete="PF('dialogExcluirItemCompra').hide();" />
 				</p:confirmDialog>
+
+				<p:commandButton value="Adicionar item" id="cadastrarItemCompra"
+					styleClass="ui-priority-primary"
+					oncomplete="PF('dialogCadastroItemCompra').show();"
+					actionListener="#{pedidoCompraBean.preparar(pedidoCompra)}" />
+
+				<p:confirmDialog widgetVar="dialogCadastroItemCompra"
+					header="Novo item"
+					message="Preencha todos os campos marcados com *.">
+
+					<h:panelGrid columns="2" cellpadding="5">
+
+
+						<p:outputLabel for="produto" value="Produto: " />
+						<p:selectOneMenu id="produto"
+							value="#{itemCompraBean.itemCompra.produtoItemCompra}"
+							converter="produtoConverter">
+							<f:selectItem itemLabel="Selecione..." itemValue="#{null}" />
+							<f:selectItems value="#{itemCompraBean.produtos}" var="produto"
+								itemLabel="#{produto.descricaoProduto}" itemValue="#{produto}" />
+						</p:selectOneMenu>
+
+						<p:outputLabel for="quantidade" value="Quantidade: " />
+						<p:inputText id="quantidade" type="text" title="Quantidade"
+							required="true" requiredMessage="Preencha o campo quantidade"
+							value="#{itemCompraBean.itemCompra.quantidadeItemCompra}">
+						</p:inputText>
+
+						<p:outputLabel for="valor" value="Valor: " />
+						<p:inputText id="valor" type="text" title="Valor: "
+							required="true" requiredMessage="Preencha o campo valor"
+							value="#{itemCompraBean.itemCompra.valorItemCompra}">
+						</p:inputText>
+					</h:panelGrid>
+
+					<p:commandButton value="Salvar" action="#{itemCompraBean.salvar}"
+						update="itemCompra" icon="ui-icon-disk" id="salvar"
+						oncomplete="PF('dialogCadastroItemCompra').hide();">
+						<f:setPropertyActionListener
+							target="#{itemCompraBean.itemCompra.pedidoItemCompra}"
+							value="#{pedidoCompra}" />
+					</p:commandButton>
+
+					<p:commandButton value="Cancelar"
+						oncomplete="PF('dialogCadastroItemCompra').hide();" />
+				</p:confirmDialog>
+
 			</p:panel>
 		</h:form>
 	</ui:define>

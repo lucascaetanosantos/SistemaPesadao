@@ -40,6 +40,9 @@ public class PedidoCompraBean {
 	}
 
 	public String salvar() {
+		if(pedidoCompra.getFornecedorPedidoCompra()==null){
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Selecione um fornecedor válido!"));
+		}
 		new PedidoCompraDao().salvar(pedidoCompra);
 		pedidosCompra = new PedidoCompraDao().listarPedidoCompra();
 		prepararModel(pedidoCompra);
