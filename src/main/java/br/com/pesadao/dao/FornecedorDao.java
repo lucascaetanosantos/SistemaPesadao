@@ -27,7 +27,7 @@ public class FornecedorDao {
 	@SuppressWarnings("unchecked")
 	public List<Fornecedor> listarFornecedores() {
 		EntityManager entityManager = JPAUtil.getEntityManager();
-		Query query = entityManager.createQuery("from Fornecedor Order By nomeFornecedor");
+		Query query = entityManager.createQuery("from Fornecedor where active='1' Order By id");
 		return query.getResultList();
 	}
 

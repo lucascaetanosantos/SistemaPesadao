@@ -52,6 +52,8 @@ public class ClienteBean {
 
 	public String excluir() {
 		this.cliente.setActive(false);
+		new ClienteDao().salvar(cliente);
+		clientes = new ClienteDao().listarClientes();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cliente excluído com sucesso!"));
 		return "cliente";
 	}

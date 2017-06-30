@@ -49,8 +49,10 @@ public class FornecedorBean {
 
 	public String excluir() {
 		this.fornecedor.setActive(false);
+		new FornecedorDao().salvar(fornecedor);
+		fornecedores = new FornecedorDao().listarFornecedores();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Fornecedor excluído com sucesso!"));
-		return "fornecedorlist";
+		return "fornecedor";
 	}
 	
 	public void prepararModel(Fornecedor fornecedor) {

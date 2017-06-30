@@ -28,7 +28,7 @@ public class ClienteDao {
 	@SuppressWarnings("unchecked")
 	public List<Cliente> listarClientes() {
 		EntityManager entityManager = JPAUtil.getEntityManager();
-		Query query = entityManager.createQuery("from Cliente where active='1' Order By nomeCliente");
+		Query query = entityManager.createQuery("from Cliente where active='1' Order By id");
 		return query.getResultList();
 	}
 
