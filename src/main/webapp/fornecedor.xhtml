@@ -10,6 +10,7 @@
 	<ui:define name="principal">
 		<p:panel>
 			<h:form id="cadastraFornecedor">
+
 				<p:growl id="growl" life="2000" />
 
 				<p:commandButton value="Cadastrar fornecedor"
@@ -19,7 +20,6 @@
 				<p:confirmDialog widgetVar="dialogCadastroFornecedor"
 					header="Cadastrar Fornecedor"
 					message="Preencha todos os campos marcados com *.">
-
 					<h:panelGrid columns="2" cellpadding="5">
 						<p:outputLabel for="razaoSocial" value="Razão Social: " />
 						<p:inputText id="razaoSocial" type="text" title="Nome"
@@ -44,8 +44,8 @@
 						</p:inputMask>
 
 						<p:outputLabel for="im" value="Inscrição Municipal: " />
-						<p:inputMask id="im" mask="9.999.999-9" title="ie"
-							required="true" requiredMessage="Preencha o campo im"
+						<p:inputMask id="im" mask="9.999.999-9" title="ie" required="true"
+							requiredMessage="Preencha o campo im"
 							value="#{fornecedorBean.fornecedor.imFornecedor}">
 						</p:inputMask>
 
@@ -80,14 +80,17 @@
 							value="#{fornecedorBean.fornecedor.complementoFornecedor}" />
 
 						<p:outputLabel for="telefonePrincipal" value="Telefone principal" />
-						<p:inputMask id="telefonePrincipal" mask="(99) 9999-9999" title="telefonePrincipal"
-							required="true" requiredMessage="Preencha o Campo celular."
+						<p:inputMask id="telefonePrincipal" mask="(99) 9999-9999"
+							title="telefonePrincipal" required="true"
+							requiredMessage="Preencha o Campo celular."
 							value="#{fornecedorBean.fornecedor.telefonePrincipalFornecedor}">
 						</p:inputMask>
 
-						<p:outputLabel for="telefoneAlternativo" value="Telefone alternativo " />
-						<p:inputMask id="telefoneAlternativo" mask="(99) 9999-9999" title="telefoneAlternativo"
-							required="true" requiredMessage="Preencha o Campo celular."
+						<p:outputLabel for="telefoneAlternativo"
+							value="Telefone alternativo " />
+						<p:inputMask id="telefoneAlternativo" mask="(99) 9999-9999"
+							title="telefoneAlternativo" required="true"
+							requiredMessage="Preencha o Campo celular."
 							value="#{fornecedorBean.fornecedor.telefoneAlternativoFornecedor}">
 						</p:inputMask>
 
@@ -111,8 +114,8 @@
 							required="true" />
 					</h:panelGrid>
 
-
-					<p:commandButton value="Limpar" type="reset" update="listaClientes cadastraCliente"
+					<p:commandButton value="Limpar" type="reset"
+						update="listaClientes cadastraCliente"
 						actionListener="fornecedorBean.limpar" />
 					<p:commandButton value="Salvar" action="#{fornecedorBean.salvar}"
 						update="listarFornecedor cadastraFornecedor" icon="ui-icon-disk"
@@ -121,6 +124,7 @@
 					<p:commandButton value="Cancelar"
 						oncomplete="PF('dialogCadastroFornecedor').hide();" />
 				</p:confirmDialog>
+
 			</h:form>
 		</p:panel>
 

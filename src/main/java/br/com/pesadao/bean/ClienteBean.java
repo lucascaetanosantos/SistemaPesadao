@@ -36,6 +36,10 @@ public class ClienteBean {
 		// TODO Auto-generated constructor stub
 		clientes = new ClienteDao().listarClientes();
 	}
+	
+	public void preparaCadastro() {
+		
+	}
 
 	public String salvar() {
 		new ClienteDao().salvar(cliente);
@@ -54,12 +58,17 @@ public class ClienteBean {
 		this.cliente.setActive(false);
 		new ClienteDao().salvar(cliente);
 		clientes = new ClienteDao().listarClientes();
+		limpar();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cliente excluído com sucesso!"));
 		return "cliente";
 	}
 
 	public void prepararModel(Cliente cliente) {
 		this.cliente = cliente;
+	}
+	
+	public void limpar(){
+		this.cliente = new Cliente();
 	}
 
 	public String getDataAtual() {
