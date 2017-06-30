@@ -3,7 +3,9 @@
  */
 package br.com.pesadao.bean;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -46,12 +48,18 @@ public class ProdutoBean {
 	
 	public String excluir() {
 		this.produto.setActive(false);
+		new ProdutoDao().salvar(produto);
+		produtos = new ProdutoDao().listarProdutos();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Produto excluído com sucesso!"));
 		return "produtolist";
 	}
 
 	public void prepararModel(Produto produto) {
 		this.produto = produto;
+	}
+	
+	public String getDataAtual() {
+		return new SimpleDateFormat("dd/MM/yyyy").format(new Date());
 	}
 
 	/**

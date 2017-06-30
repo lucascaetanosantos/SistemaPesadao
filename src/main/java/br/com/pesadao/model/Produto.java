@@ -25,7 +25,7 @@ public class Produto implements Serializable {
 	 */
 	private static final long serialVersionUID = -7478185936635932942L;
 	private Integer id;
-	private Date cadastroProduto = new Date();
+	private Date dataCadastroProduto = new Date();
 	private String descricaoProduto;
 	private String marcaProduto;
 	private String composicaoProduto;
@@ -50,11 +50,11 @@ public class Produto implements Serializable {
 	 * @param status
 	 * @param lastUpdate
 	 */
-	public Produto(Integer id, Date cadastroProduto, String descricaoProduto, String marcaProduto,
+	public Produto(Integer id, Date dataCadastroProduto, String descricaoProduto, String marcaProduto,
 			String composicaoProduto, String corProduto, boolean active, Date lastUpdate) {
 		super();
 		this.id = id;
-		this.cadastroProduto = cadastroProduto;
+		this.dataCadastroProduto = dataCadastroProduto;
 		this.descricaoProduto = descricaoProduto;
 		this.marcaProduto = marcaProduto;
 		this.composicaoProduto = composicaoProduto;
@@ -83,15 +83,15 @@ public class Produto implements Serializable {
 	 * @return the cadastroProduto
 	 */
 	@Temporal(TemporalType.DATE)
-	public Date getCadastroProduto() {
-		return cadastroProduto;
+	public Date getDataCadastroProduto() {
+		return dataCadastroProduto;
 	}
 
 	/**
 	 * @param cadastroProduto the cadastroProduto to set
 	 */
-	public void setCadastroProduto(Date cadastroProduto) {
-		this.cadastroProduto = cadastroProduto;
+	public void setDataCadastroProduto(Date cadastroProduto) {
+		this.dataCadastroProduto = cadastroProduto;
 	}
 
 	/**
@@ -215,7 +215,7 @@ public class Produto implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return "Produto [id=" + id + ", cadastroProduto=" + cadastroProduto + ", descricaoProduto=" + descricaoProduto
+		return "Produto [id=" + id + ", cadastroProduto=" + dataCadastroProduto + ", descricaoProduto=" + descricaoProduto
 				+ ", marcaProduto=" + marcaProduto + ", composicaoProduto=" + composicaoProduto + ", corProduto="
 				+ corProduto + ", active=" + active + ", lastUpdate=" + lastUpdate + "]";
 	}

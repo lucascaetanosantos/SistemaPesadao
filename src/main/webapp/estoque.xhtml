@@ -1,0 +1,55 @@
+<ui:composition template="/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo"> Estoque</ui:define>
+
+	<ui:define name="principal">
+
+		<p:panel header="Lista de Estoques">
+
+			<h:form id="listaEstoques">
+				<p:dataTable id="tableEstoque" var="produto"
+					value="#{estoqueBean.listEstoque}"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+					paginator="true" paginatorPosition="bottom" rows="10"
+					style="margin-bottom:20px">
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Produto" />
+						</f:facet>
+						<h:outputText value="#{produto.produtoEstoque.descricaoProduto}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Quantidade" />
+						</f:facet>
+						<h:outputText value="#{produto.quantidadeEstoque}" />
+					</p:column>
+					
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Total em estoque" />
+						</f:facet>
+						<h:outputText value="#{produto.totalEstoque}" />
+					</p:column>
+					
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Última atualização" />
+						</f:facet>
+						<h:outputText value="#{produto.lastUpdate}" />
+					</p:column>
+				</p:dataTable>
+
+			</h:form>
+
+		</p:panel>
+	</ui:define>
+
+</ui:composition>

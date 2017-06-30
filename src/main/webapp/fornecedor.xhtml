@@ -10,7 +10,6 @@
 	<ui:define name="principal">
 		<p:panel>
 			<h:form id="cadastraFornecedor">
-
 				<p:growl id="growl" life="2000" />
 
 				<p:commandButton value="Cadastrar fornecedor"
@@ -20,6 +19,7 @@
 				<p:confirmDialog widgetVar="dialogCadastroFornecedor"
 					header="Cadastrar Fornecedor"
 					message="Preencha todos os campos marcados com *.">
+
 					<h:panelGrid columns="2" cellpadding="5">
 						<p:outputLabel for="razaoSocial" value="Razão Social: " />
 						<p:inputText id="razaoSocial" type="text" title="Nome"
@@ -32,7 +32,7 @@
 							value="#{fornecedorBean.fornecedor.fantasiaFornecedor}" />
 
 						<p:outputLabel for="cnpj" value="CNPJ: " />
-						<p:inputMask id="cnpj" mask="999.999.999-99" title="CNPJ"
+						<p:inputMask id="cnpj" mask="99.999.999/9999-99" title="CNPJ"
 							required="true" requiredMessage="Preencha o campo CNPJ."
 							value="#{fornecedorBean.fornecedor.cnpjFornecedor}">
 						</p:inputMask>
@@ -103,19 +103,12 @@
 						<p:calendar id="dataFundacao"
 							value="#{fornecedorBean.fornecedor.dataFundacaoFornecedor}"
 							pattern="dd/MM/yyyy"
-							maxdate="#{fornecedorBean.fornecedor.dataFundacaoFornecedor}"
-							required="true" />
-
-						<p:outputLabel for="cadastro" value="Data de Cadastro: " />
-						<p:calendar id="cadastro"
-							value="#{fornecedorBean.fornecedor.dataCadastroFornecedor}"
-							pattern="dd/MM/yyyy"
-							maxdate="#{fornecedorBean.fornecedor.dataCadastroFornecedor}"
+							maxdate="#{fornecedorBean.dataAtual}"
 							required="true" />
 					</h:panelGrid>
 
-					<p:commandButton value="Limpar" type="reset"
-						update="listaClientes cadastraCliente"
+
+					<p:commandButton value="Limpar" type="reset" update="listaClientes cadastraCliente"
 						actionListener="fornecedorBean.limpar" />
 					<p:commandButton value="Salvar" action="#{fornecedorBean.salvar}"
 						update="listarFornecedor cadastraFornecedor" icon="ui-icon-disk"
@@ -128,7 +121,7 @@
 			</h:form>
 		</p:panel>
 
-		<p:panel header="Lista de Fornecedores">
+		<p:panel header="Lista de Fornecedores" scrollable="true" scrollHeight="300" style="width:100%"   resizableColumns="true"  lazy="true" >
 
 			<h:form id="listarFornecedor">
 				<p:dataTable id="tabelaFornecedor" var="fornecedor"
