@@ -1,0 +1,155 @@
+<ui:composition template="/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo"> Produto</ui:define>
+
+	<ui:define name="principal">
+		<p:panel>
+			<h:form id="cadastraProduto">
+				<p:growl id="growl" life="2000" />
+
+				<p:commandButton value="Cadastrar produto" id="cadastrarProduto"
+					styleClass="ui-priority-primary"
+					oncomplete="PF('dialogCadastroProduto').show();" />
+
+				<p:confirmDialog widgetVar="dialogCadastroProduto"
+					header="Cadastrar Produto"
+					message="Preencha todos os campos marcados com *.">
+
+					<h:panelGrid columns="2" cellpadding="5">
+						<p:outputLabel for="descricao" value="Descrição: " />
+						<p:inputText id="descricao" type="text" title="Descrição" required="true"
+							requiredMessage="Preencha o campo descricao"
+							value="#{produtoBean.produto.descricaoProduto}">
+						</p:inputText>
+						
+						<p:outputLabel for="marca" value="Marca: " />
+						<p:inputText id="marca" type="text" title="Marca" required="true"
+							requiredMessage="Preencha o campo marca"
+							value="#{produtoBean.produto.marcaProduto}">
+						</p:inputText>
+						
+						<p:outputLabel for="composicao" value="Composição " />
+						<p:inputText id="composicao" type="text" title="Composicao" required="true"
+							requiredMessage="Preencha o campo composicao"
+							value="#{produtoBean.produto.composicaoProduto}">
+						</p:inputText>
+						
+						<p:outputLabel for="cor" value="Cor: " />
+						<p:inputText id="cor" type="text" title="Cor" required="true"
+							requiredMessage="Preencha o campo cor"
+							value="#{produtoBean.produto.corProduto}">
+						</p:inputText>
+						
+						<p:outputLabel for="cadastro" value="Data de Cadastro: " />
+						<p:calendar id="cadastro"
+							value="#{produtoBean.produto.dataCadastroProduto}"
+							pattern="dd/MM/yyyy" maxdate="#{produtoBean.dataAtual}"
+							required="true" />
+					</h:panelGrid>
+
+					<p:commandButton value="Limpar" type="reset"
+						update="listaProdutos cadastraProduto"
+						actionListener="fornecedorBean.limpar" />
+					<p:commandButton value="Salvar" action="#{produtoBean.salvar}"
+						update="listaProdutos cadastraProduto" icon="ui-icon-disk"
+						id="salvar" oncomplete="PF('dialogCadastroProduto').hide();" />
+
+					<p:commandButton value="Cancelar"
+						oncomplete="PF('dialogCadastroProduto').hide();" />
+				</p:confirmDialog>
+
+
+			</h:form>
+		</p:panel>
+
+
+		<p:panel header="Lista de Produtos">
+
+			<h:form id="listaProdutos">
+				<p:dataTable id="tableProduto" var="produto"
+					value="#{produtoBean.produtos}"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+					paginator="true" paginatorPosition="bottom" rows="10"
+					style="margin-bottom:20px">
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Descrição" />
+						</f:facet>
+						<h:outputText value="#{produto.descricaoProduto}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Marca" />
+						</f:facet>
+						<h:outputText value="#{produto.marcaProduto}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Composição" />
+						</f:facet>
+						<h:outputText value="#{produto.composicaoProduto}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Cor" />
+						</f:facet>
+						<h:outputText value="#{produto.corProduto}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Data de Cadastro" />
+						</f:facet>
+						<h:outputText value="#{produto.dataCadastroProduto}" />
+					</p:column>
+					
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Última atualização" />
+						</f:facet>
+						<h:outputText value="#{produto.lastUpdate}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Editar" />
+						</f:facet>
+						<p:commandButton icon=" ui-icon-pencil" update="@form"
+							actionListener="#{produtoBean.prepararModel(produto)}"
+							oncomplete="PF('dialogCadastroProduto').show();" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Excluir" />
+						</f:facet>
+						<p:commandButton icon="ui-icon-closethick"
+							update="listaProdutos cadastraProduto"
+							actionListener="#{produtoBean.prepararModel(produto)}"
+							oncomplete="PF('dialogExcluirProduto').show();" />
+					</p:column>
+				</p:dataTable>
+
+				<p:confirmDialog message="Deseja realmente excluir este produto?"
+					widgetVar="dialogExcluirProduto">
+					<p:commandButton value="Sim" action="#{produtoBean.excluir}"
+						oncomplete="PF('dialogExcluirProduto').hide();"
+						update="listaProdutos" />
+					<p:commandButton value="Não"
+						oncomplete="PF('dialogExcluirProduto').hide();" />
+				</p:confirmDialog>
+
+			</h:form>
+
+		</p:panel>
+	</ui:define>
+
+</ui:composition>

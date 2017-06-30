@@ -27,7 +27,7 @@ public class ProdutoDao {
 	@SuppressWarnings("unchecked")
 	public List<Produto> listarProdutos(){
 		EntityManager entityManager = JPAUtil.getEntityManager();
-		Query query = entityManager.createQuery("from Produto Order By descricaoProduto Where status=1");
+		Query query = entityManager.createQuery("from Produto  Where active='1' Order By id");
 		return query.getResultList();
 	}
 
