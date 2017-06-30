@@ -9,6 +9,7 @@
 
 	<ui:define name="principal">
 		<p:panel>
+		
 			<h:form id="cadastraFornecedor">
 				<p:growl id="growl" life="2000" />
 
@@ -20,96 +21,100 @@
 					header="Cadastrar Fornecedor"
 					message="Preencha todos os campos marcados com *.">
 
-					<h:panelGrid columns="2" cellpadding="5">
-						<p:outputLabel for="razaoSocial" value="Razão Social: " />
-						<p:inputText id="razaoSocial" type="text" title="Nome"
-							required="true" requiredMessage="Preencha o campo razão social."
-							value="#{fornecedorBean.fornecedor.nomeFornecedor}" />
+					<p:scrollPanel style="height:400px; width: 500px;">
+						<h:panelGrid columns="2" cellpadding="5">
 
-						<p:outputLabel for="nomeFantasia" value="Nome fantasia: " />
-						<p:inputText id="nomeFantasia" type="text" title="nomeFantasia"
-							required="true" requiredMessage="Preencha o campo nome fantasia."
-							value="#{fornecedorBean.fornecedor.fantasiaFornecedor}" />
+							<p:outputLabel for="razaoSocial" value="Razão Social: " />
+							<p:inputText id="razaoSocial" type="text" title="Nome"
+								required="true" requiredMessage="Preencha o campo razão social."
+								value="#{fornecedorBean.fornecedor.nomeFornecedor}" />
 
-						<p:outputLabel for="cnpj" value="CNPJ: " />
-						<p:inputMask id="cnpj" mask="99.999.999/9999-99" title="CNPJ"
-							required="true" requiredMessage="Preencha o campo CNPJ."
-							value="#{fornecedorBean.fornecedor.cnpjFornecedor}">
-						</p:inputMask>
+							<p:outputLabel for="nomeFantasia" value="Nome fantasia: " />
+							<p:inputText id="nomeFantasia" type="text" title="nomeFantasia"
+								required="true"
+								requiredMessage="Preencha o campo nome fantasia."
+								value="#{fornecedorBean.fornecedor.fantasiaFornecedor}" />
 
-						<p:outputLabel for="ie" value="Inscrição Estadual: " />
-						<p:inputMask id="ie" mask="999.99999-99" title="ie"
-							required="true" requiredMessage="Preencha o campo ie"
-							value="#{fornecedorBean.fornecedor.ieFornecedor}">
-						</p:inputMask>
+							<p:outputLabel for="cnpj" value="CNPJ: " />
+							<p:inputMask id="cnpj" mask="99.999.999/9999-99" title="CNPJ"
+								required="true" requiredMessage="Preencha o campo CNPJ."
+								value="#{fornecedorBean.fornecedor.cnpjFornecedor}">
+							</p:inputMask>
 
-						<p:outputLabel for="im" value="Inscrição Municipal: " />
-						<p:inputMask id="im" mask="9.999.999-9" title="ie" required="true"
-							requiredMessage="Preencha o campo im"
-							value="#{fornecedorBean.fornecedor.imFornecedor}">
-						</p:inputMask>
+							<p:outputLabel for="ie" value="Inscrição Estadual: " />
+							<p:inputMask id="ie" mask="999.99999-99" title="ie"
+								required="true" requiredMessage="Preencha o campo ie"
+								value="#{fornecedorBean.fornecedor.ieFornecedor}">
+							</p:inputMask>
 
-						<p:outputLabel for="estado" value="Estado: " />
-						<p:selectOneMenu id="estado"
-							value="#{fornecedorBean.fornecedor.ufFornecedor}" required="true"
-							requiredMessage="Informe o Estado: ">
-							<f:selectItem itemLabel="Selecione..." itemValue="#{null}" />
-							<f:selectItems value="#{fornecedorBean.estados}" var="estado"
-								itemLabel="#{estado.label}" itemValue="#{estado}" />
-						</p:selectOneMenu>
+							<p:outputLabel for="im" value="Inscrição Municipal: " />
+							<p:inputMask id="im" mask="9.999.999-9" title="ie"
+								required="true" requiredMessage="Preencha o campo im"
+								value="#{fornecedorBean.fornecedor.imFornecedor}">
+							</p:inputMask>
 
-						<p:outputLabel for="cidade" value="Cidade: " />
-						<p:inputText id="cidade" type="text" title="cidade"
-							required="true" requiredMessage="Preencha o campo cidade"
-							value="#{fornecedorBean.fornecedor.cidadeFornecedor}" />
+							<p:outputLabel for="estado" value="Estado: " />
+							<p:selectOneMenu id="estado"
+								value="#{fornecedorBean.fornecedor.ufFornecedor}"
+								required="true" requiredMessage="Informe o Estado: ">
+								<f:selectItem itemLabel="Selecione..." itemValue="#{null}" />
+								<f:selectItems value="#{fornecedorBean.estados}" var="estado"
+									itemLabel="#{estado.label}" itemValue="#{estado}" />
+							</p:selectOneMenu>
 
-						<p:outputLabel for="bairro" value="Bairro: " />
-						<p:inputText id="bairro" type="text" title="Bairro"
-							required="true" requiredMessage="Preencha o campo bairro"
-							value="#{fornecedorBean.fornecedor.bairroFornecedor}" />
+							<p:outputLabel for="cidade" value="Cidade: " />
+							<p:inputText id="cidade" type="text" title="cidade"
+								required="true" requiredMessage="Preencha o campo cidade"
+								value="#{fornecedorBean.fornecedor.cidadeFornecedor}" />
 
-						<p:outputLabel for="enderecoFornecedor" value="Endereco: " />
-						<p:inputText id="enderecoFornecedor" type="text"
-							title="Endereco Fornecedor" required="true"
-							requiredMessage="Preencha o campo endereço"
-							value="#{fornecedorBean.fornecedor.enderecoFornecedor}" />
+							<p:outputLabel for="bairro" value="Bairro: " />
+							<p:inputText id="bairro" type="text" title="Bairro"
+								required="true" requiredMessage="Preencha o campo bairro"
+								value="#{fornecedorBean.fornecedor.bairroFornecedor}" />
 
-						<p:outputLabel for="complemento" value="Complemento: " />
-						<p:inputText id="complemento" type="text" title="complemento"
-							required="true" requiredMessage="Preencha o campo complemento"
-							value="#{fornecedorBean.fornecedor.complementoFornecedor}" />
+							<p:outputLabel for="enderecoFornecedor" value="Endereco: " />
+							<p:inputText id="enderecoFornecedor" type="text"
+								title="Endereco Fornecedor" required="true"
+								requiredMessage="Preencha o campo endereço"
+								value="#{fornecedorBean.fornecedor.enderecoFornecedor}" />
 
-						<p:outputLabel for="telefonePrincipal" value="Telefone principal" />
-						<p:inputMask id="telefonePrincipal" mask="(99) 9999-9999"
-							title="telefonePrincipal" required="true"
-							requiredMessage="Preencha o Campo celular."
-							value="#{fornecedorBean.fornecedor.telefonePrincipalFornecedor}">
-						</p:inputMask>
+							<p:outputLabel for="complemento" value="Complemento: " />
+							<p:inputText id="complemento" type="text" title="complemento"
+								required="true" requiredMessage="Preencha o campo complemento"
+								value="#{fornecedorBean.fornecedor.complementoFornecedor}" />
 
-						<p:outputLabel for="telefoneAlternativo"
-							value="Telefone alternativo " />
-						<p:inputMask id="telefoneAlternativo" mask="(99) 9999-9999"
-							title="telefoneAlternativo" required="true"
-							requiredMessage="Preencha o Campo celular."
-							value="#{fornecedorBean.fornecedor.telefoneAlternativoFornecedor}">
-						</p:inputMask>
+							<p:outputLabel for="telefonePrincipal" value="Telefone principal" />
+							<p:inputMask id="telefonePrincipal" mask="(99) 9999-9999"
+								title="telefonePrincipal" required="true"
+								requiredMessage="Preencha o Campo celular."
+								value="#{fornecedorBean.fornecedor.telefonePrincipalFornecedor}">
+							</p:inputMask>
 
-						<p:outputLabel for="email" value="Email: " />
-						<p:inputText id="email" type="text" title="Email" required="true"
-							requiredMessage="Preencha o campo email"
-							value="#{fornecedorBean.fornecedor.emailFornecedor}" />
+							<p:outputLabel for="telefoneAlternativo"
+								value="Telefone alternativo " />
+							<p:inputMask id="telefoneAlternativo" mask="(99) 9999-9999"
+								title="telefoneAlternativo" required="true"
+								requiredMessage="Preencha o Campo celular."
+								value="#{fornecedorBean.fornecedor.telefoneAlternativoFornecedor}">
+							</p:inputMask>
 
-						<p:outputLabel for="dataFundacao" value="Data de Fundação: " />
-						<p:calendar id="dataFundacao"
-							value="#{fornecedorBean.fornecedor.dataFundacaoFornecedor}"
-							pattern="dd/MM/yyyy"
-							maxdate="#{fornecedorBean.dataAtual}"
-							required="true" />
-					</h:panelGrid>
+							<p:outputLabel for="email" value="Email: " />
+							<p:inputText id="email" type="text" title="Email" required="true"
+								requiredMessage="Preencha o campo email"
+								value="#{fornecedorBean.fornecedor.emailFornecedor}" />
 
+							<p:outputLabel for="dataFundacao" value="Data de Fundação: " />
+							<p:calendar id="dataFundacao"
+								value="#{fornecedorBean.fornecedor.dataFundacaoFornecedor}"
+								pattern="dd/MM/yyyy" maxdate="#{fornecedorBean.dataAtual}"
+								required="true" />
+						</h:panelGrid>
+					</p:scrollPanel>
 
-					<p:commandButton value="Limpar" type="reset" update="listaClientes cadastraCliente"
+					<p:commandButton value="Limpar" type="reset"
+						update="listaClientes cadastraCliente"
 						actionListener="fornecedorBean.limpar" />
+
 					<p:commandButton value="Salvar" action="#{fornecedorBean.salvar}"
 						update="listarFornecedor cadastraFornecedor" icon="ui-icon-disk"
 						id="salvar" oncomplete="PF('dialogCadastrofornecedor').hide();" />
@@ -121,7 +126,9 @@
 			</h:form>
 		</p:panel>
 
-		<p:panel header="Lista de Fornecedores" scrollable="true" scrollHeight="300" style="width:100%"   resizableColumns="true"  lazy="true" >
+		<p:panel header="Lista de Fornecedores" scrollable="true"
+			scrollHeight="300" style="width:100%" resizableColumns="true"
+			lazy="true">
 
 			<h:form id="listarFornecedor">
 				<p:dataTable id="tabelaFornecedor" var="fornecedor"
@@ -247,8 +254,9 @@
 						<f:facet name="header">
 							<h:outputText value="Editar" />
 						</f:facet>
-						<p:commandButton icon=" ui-icon-pencil" update="@form"
-							actionListener="#{clienteBean.prepararModel(cliente)}"
+						<p:commandButton icon=" ui-icon-pencil"
+							update="listarFornecedor cadastraFornecedor"
+							actionListener="#{fornecedorBean.prepararModel(fornecedor)}"
 							oncomplete="PF('dialogCadastroFornecedor').show();" />
 					</p:column>
 

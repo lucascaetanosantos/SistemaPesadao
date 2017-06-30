@@ -36,10 +36,6 @@ public class ClienteBean {
 		// TODO Auto-generated constructor stub
 		clientes = new ClienteDao().listarClientes();
 	}
-	
-	public void preparaCadastro() {
-		
-	}
 
 	public String salvar() {
 		new ClienteDao().salvar(cliente);

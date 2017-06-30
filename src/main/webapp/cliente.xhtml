@@ -8,10 +8,11 @@
 	<ui:define name="titulo"> Cliente</ui:define>
 
 	<ui:define name="principal">
-		<p:panel header="Cadastrar Cliente">
+		<p:panel>
 
 			<h:form id="cadastraCliente">
 				<p:growl id="growl" />
+				
 				<p:commandButton value="Cadastrar cliente" id="cadastrarCliente"
 					styleClass="ui-priority-primary"
 					oncomplete="PF('dialogCadastroCliente').show();" />
@@ -19,9 +20,11 @@
 				<p:confirmDialog widgetVar="dialogCadastroCliente"
 					header="Cadastrar Cliente"
 					message="Preencha todos os campos marcados com *.">
+					
 					<p:scrollPanel style="height:400px; width: 500px;">
 						<h:panelGrid columns="2" cellpadding="5"
 							id="painelCadastraCliente">
+							
 							<p:outputLabel for="nome" value="Nome: " />
 							<p:inputText id="nome" type="text" title="Nome" required="true"
 								requiredMessage="Preencha o campo Nome."
@@ -100,7 +103,6 @@
 								required="true" />
 						</h:panelGrid>
 					</p:scrollPanel>
-					
 					<p:commandButton value="Reset" type="reset"
 						update="listaClientes cadastraCliente"
 						actionListener="clienteBean.limpar" />

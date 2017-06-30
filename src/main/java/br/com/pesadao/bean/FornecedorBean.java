@@ -23,7 +23,6 @@ import br.com.pesadao.model.Fornecedor;
  * @author Lucas
  *
  */
-
 @ManagedBean
 @SessionScoped
 public class FornecedorBean {
@@ -41,7 +40,7 @@ public class FornecedorBean {
 		fornecedores = new FornecedorDao().listarFornecedores();
 		fornecedor = new Fornecedor();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Fornecedor cadastrado com sucesso!"));
-		return "fornecedorlist";
+		return "fornecedor";
 	}
 
 	public String editar(Fornecedor fornecedor) {
