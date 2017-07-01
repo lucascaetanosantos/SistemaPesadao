@@ -36,7 +36,7 @@ public class ItemCompraBean {
 
 	public void salvar(PedidoCompra pedidoCompra) {
 		new ItemCompraDao().salvar(itemCompra);
-		itensCompra = new ItemCompraDao().listarItensCompra(pedidoCompraBean.getUltimoPedido().getId());
+		itensCompra = new ItemCompraDao().listarItensCompra(itemCompra.getProdutoItemCompra().getId());
 		itemCompra = new ItemCompra();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Item salvo com sucesso!"));
 	}
@@ -46,7 +46,6 @@ public class ItemCompraBean {
 		new ItemCompraDao().salvar(itemCompra);
 		produtos = new ProdutoDao().listarProdutos();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Item excluído com sucesso!"));
-		//itensCompra = new ItemCompraDao().listarItensCompra(pedidoCompraBean.getUltimoPedido());
 	}
 
 	public void prepararModel(ItemCompra itemCompra) {

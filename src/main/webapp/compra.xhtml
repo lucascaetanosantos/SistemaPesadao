@@ -38,6 +38,7 @@
 
 				<p:blockUI block="itemCompra" widgetVar="blockItemCompra"
 					blocked="true" />
+					
 			</p:panel>
 		</h:form>
 		<!-- Final Panel de pedidoCompra*********************************************************** -->
@@ -101,7 +102,7 @@
 					</p:column>
 				</p:dataTable>
 				<!-- Final DataTable de itemCompra*********************************************************** -->
-				
+
 				<p:commandButton value="Adicionar item" id="cadastrarItemCompra"
 					styleClass="ui-priority-primary"
 					oncomplete="PF('dialogCadastroItemCompra').show();"
@@ -138,7 +139,8 @@
 					</h:panelGrid>
 					<!-- Final cadastro de compra*********************************************************** -->
 
-					<p:commandButton value="Salvar" action="#{itemCompraBean.salvar(pedidoCompra)}"
+					<p:commandButton value="Salvar"
+						action="#{itemCompraBean.salvar(pedidoCompra)}"
 						update="itemCompra" icon="ui-icon-disk" id="salvar"
 						oncomplete="PF('dialogCadastroItemCompra').hide();">
 						<f:setPropertyActionListener

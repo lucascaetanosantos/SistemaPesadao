@@ -19,7 +19,6 @@ import br.com.pesadao.model.Fornecedor;
 import br.com.pesadao.model.ItemCompra;
 import br.com.pesadao.model.PedidoCompra;
 
-
 /**
  * @author Lucas
  *
@@ -40,12 +39,13 @@ public class PedidoCompraBean {
 		fornecedores = new FornecedorDao().listarFornecedores();
 	}
 
-	public String salvar() {
-		new PedidoCompraDao().salvar(pedidoCompra);
-		pedidosCompra = new PedidoCompraDao().listarPedidoCompra();
-		prepararModel(pedidoCompra);
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pedido salvo com sucesso!! "));
-		return "pedidocompra";
+	public void salvar() {
+		if (pedidoCompra.getFornecedorPedidoCompra() != null) {
+			new PedidoCompraDao().salvar(pedidoCompra);
+			pedidosCompra = new PedidoCompraDao().listarPedidoCompra();
+			prepararModel(pedidoCompra);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pedido salvo com sucesso!! "));
+		}
 	}
 
 	public void prepararModel(PedidoCompra pedidoCompra) {
@@ -55,27 +55,23 @@ public class PedidoCompraBean {
 	public String getDataAtual() {
 		return new SimpleDateFormat("dd/MM/yyyy").format(new Date());
 	}
-	
-	public void resgataUltimoRegistro(){
-		for(PedidoCompra ped : pedidosCompra){
+
+	public void resgataUltimoRegistro() {
+		for (PedidoCompra ped : pedidosCompra) {
 			setUltimoPedido(ped);
 		}
-		System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"+pedidoCompra.getId());
+		System.out.println(
+				"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" + pedidoCompra.getId());
 	}
-	
-	
+
 	public PedidoCompra getUltimoPedido() {
 		return ultimoPedido;
 	}
-	
+
 	public void setUltimoPedido(PedidoCompra ultimoPedido) {
 		this.ultimoPedido = ultimoPedido;
 	}
-	
-	
-	
-	
-	
+
 	/**
 	 * @return the pedidosCompra
 	 */
@@ -84,7 +80,8 @@ public class PedidoCompraBean {
 	}
 
 	/**
-	 * @param pedidosCompra the pedidosCompra to set
+	 * @param pedidosCompra
+	 *            the pedidosCompra to set
 	 */
 	public void setPedidosCompra(List<PedidoCompra> pedidosCompra) {
 		this.pedidosCompra = pedidosCompra;
@@ -98,7 +95,8 @@ public class PedidoCompraBean {
 	}
 
 	/**
-	 * @param itensCompra the itensCompra to set
+	 * @param itensCompra
+	 *            the itensCompra to set
 	 */
 	public void setItensCompra(List<ItemCompra> itensCompra) {
 		this.itensCompra = itensCompra;
@@ -110,56 +108,70 @@ public class PedidoCompraBean {
 	public PedidoCompra getPedidoCompra() {
 		return pedidoCompra;
 	}
+
 	/**
-	 * @param pedidoCompra the pedidoCompra to set
+	 * @param pedidoCompra
+	 *            the pedidoCompra to set
 	 */
 	public void setPedidoCompra(PedidoCompra pedidoCompra) {
 		this.pedidoCompra = pedidoCompra;
 	}
+
 	/**
 	 * @return the itemCompra
 	 */
 	public ItemCompra getItemCompra() {
 		return itemCompra;
 	}
+
 	/**
-	 * @param itemCompra the itemCompra to set
+	 * @param itemCompra
+	 *            the itemCompra to set
 	 */
 	public void setItemCompra(ItemCompra itemCompra) {
 		this.itemCompra = itemCompra;
 	}
+
 	/**
 	 * @return the pedidosCompras
 	 */
 	public List<PedidoCompra> getPedidosCompras() {
 		return pedidosCompra;
 	}
+
 	/**
-	 * @param pedidosCompras the pedidosCompras to set
+	 * @param pedidosCompras
+	 *            the pedidosCompras to set
 	 */
 	public void setPedidosCompras(List<PedidoCompra> pedidosCompras) {
 		this.pedidosCompra = pedidosCompras;
 	}
+
 	/**
 	 * @return the itemCompras
 	 */
 	public List<ItemCompra> getItemCompras() {
 		return itensCompra;
 	}
+
 	/**
-	 * @param itemCompras the itemCompras to set
+	 * @param itemCompras
+	 *            the itemCompras to set
 	 */
 	public void setItemCompras(List<ItemCompra> itemCompras) {
 		this.itensCompra = itemCompras;
 	}
+
 	/**
 	 * @return the fornecedores
 	 */
 	public List<Fornecedor> getFornecedores() {
 		return fornecedores;
 	}
+
 	/**
-	 * @param fornecedores the fornecedores to set
+	 * @param fornecedores
+	 *            the fornecedores to set
 	 */
 	public void setFornecedores(List<Fornecedor> fornecedores) {
 		this.fornecedores = fornecedores;
