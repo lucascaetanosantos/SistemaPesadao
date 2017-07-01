@@ -45,13 +45,15 @@ public class PedidoCompraBean {
 		}
 		new PedidoCompraDao().salvar(pedidoCompra);
 		pedidosCompra = new PedidoCompraDao().listarPedidoCompra();
-		prepararModel(pedidoCompra);
+		prepararModel();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pedido salvo com sucesso!! "));
-		return "pedidocompralist";
+		return "compra";
 	}
 
-	public void prepararModel(PedidoCompra pedidoCompra) {
-		this.pedidoCompra = pedidoCompra;
+	public void prepararModel() {
+		pedidoCompra = new PedidoCompra();
+		PedidoCompraDao pedidoCompraDao = new PedidoCompraDao();
+		pedidoCompraDao.salvar(pedidoCompra);
 	}
 
 	public String getDataAtual() {

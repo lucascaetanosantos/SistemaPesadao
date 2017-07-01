@@ -30,6 +30,7 @@ public class ContaPagar implements Serializable {
 	private PedidoCompra pedidoContaPagar;
 	private double valorContaPagar;
 	private Date dataCadastroContaPagar = new Date();
+	private String descricaoContaPagar;
 
 	/**
 	 * 
@@ -84,6 +85,20 @@ public class ContaPagar implements Serializable {
 	 */
 	public void setPedidoContaPagar(PedidoCompra pedidoContaPagar) {
 		this.pedidoContaPagar = pedidoContaPagar;
+	}
+
+	/**
+	 * @return the descricaoContaPagar
+	 */
+	public String getDescricaoContaPagar() {
+		return descricaoContaPagar;
+	}
+
+	/**
+	 * @return the descricaoContaPagar
+	 */
+	public void setDescricaoContaPagar(String descricaoContaPagar) {
+		this.descricaoContaPagar = descricaoContaPagar;
 	}
 
 	/**

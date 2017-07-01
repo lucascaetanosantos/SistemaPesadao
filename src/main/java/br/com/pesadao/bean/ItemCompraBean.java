@@ -27,7 +27,7 @@ public class ItemCompraBean {
 	private List<ItemCompra> itensCompra = new ArrayList<ItemCompra>();
 	private List<Produto> produtos;
 
-	private PedidoVendaBean pedidoCompraBean;
+	private PedidoCompraBean pedidoCompraBean;
 
 	public ItemCompraBean() {
 		produtos = new ProdutoDao().listarProdutos();
@@ -101,7 +101,7 @@ public class ItemCompraBean {
 	/**
 	 * @return the pedidoCompraBean
 	 */
-	public PedidoVendaBean getPedidoCompraBean() {
+	public PedidoCompraBean getPedidoCompraBean() {
 		return pedidoCompraBean;
 	}
 
@@ -109,7 +109,7 @@ public class ItemCompraBean {
 	 * @param pedidoCompraBean
 	 *            the pedidoCompraBean to set
 	 */
-	public void setPedidoCompraBean(PedidoVendaBean pedidoCompraBean) {
+	public void setPedidoCompraBean(PedidoCompraBean pedidoCompraBean) {
 		this.pedidoCompraBean = pedidoCompraBean;
 	}
 }

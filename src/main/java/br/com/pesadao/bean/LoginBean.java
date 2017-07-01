@@ -15,7 +15,7 @@ import br.com.pesadao.model.Usuarios;
 @SessionScoped
 public class LoginBean {
 
-	private br.com.pesadao.model.Usuario usuario = new Usuario();
+	Usuario usuario = new Usuario();
 
 	private String nomeUsuario;
 	private String senha;

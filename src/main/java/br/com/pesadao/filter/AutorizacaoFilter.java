@@ -42,8 +42,8 @@ public class AutorizacaoFilter implements Filter {
 		} else if (loginBean.getUsuarios() == Usuarios.ATENDENTE
 				&& (!(endereco.contains("venda") || endereco.contains("index") || endereco.contains("restrito")
 						|| endereco.contains("list") || endereco.contains("pedido_template"))
-						|| endereco.contains("forn"))) {
-			((HttpServletResponse) response).sendRedirect(contextPath + "/acessorestrito_template.xhtml");
+						|| endereco.contains("compra"))) {
+			((HttpServletResponse) response).sendRedirect(contextPath + "/acessorestrito.xhtml");
 
 		} else if (loginBean.getUsuarios() == Usuarios.CADASTRANTE
 				&& !(endereco.contains("cad") || endereco.contains("index") || endereco.contains("restrito"))) {

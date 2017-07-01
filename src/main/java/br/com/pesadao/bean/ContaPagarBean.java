@@ -37,6 +37,10 @@ public class ContaPagarBean {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Conta a pagar cadastrada com sucesso!"));
 		return "contaspagarlist?faces-redirect=true";
 	}
+	
+	public void limpar() {
+		
+	}
 
 	/**
 	 * @return the contaPagar

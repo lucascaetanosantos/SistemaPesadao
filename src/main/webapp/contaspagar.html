@@ -1,0 +1,191 @@
+<ui:composition template="/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo"> Contas a Pagar</ui:define>
+
+	<ui:define name="principal">
+		<p:panel>
+
+			<h:form id="cadastraContasPagar">
+				<p:growl id="growl" />
+
+				<p:commandButton value="Cadastrar contas a pagar"
+					id="cadastrarContasPagar" styleClass="ui-priority-primary"
+					oncomplete="PF('dialogCadastroContasPagar').show();" />
+
+				<p:confirmDialog widgetVar="dialogCadastroContasPagar"
+					header="Cadastrar Contas a pagar"
+					message="Preencha todos os campos marcados com *.">
+
+					<p:scrollPanel style="height:400px; width: 500px;">
+						<h:panelGrid columns="2" cellpadding="5"
+							id="painelCadastraContasPagar">
+
+							<p:outputLabel for="descricao" value="Descrição: " />
+							<p:inputTextarea id="descricao" type="text" title="Descricao"
+								required="true" requiredMessage="Preencha o campo Descrição."
+								value="#{contaPagarBean.contaPagar.descricaoContaPagar}" />
+
+							<p:outputLabel for="valor" value="Valor: " />
+							<p:inputNumber id="valor" type="text" title="Valor"
+								required="true" requiredMessage="Preencha o campo valor*"
+								value="#{contaPagarBean.contaPagar.valorContaPagar}" />
+
+						</h:panelGrid>
+					</p:scrollPanel>
+					<p:commandButton value="Reset" type="reset"
+						update="listaContasPagar cadastraContasPagar"
+						actionListener="#{contaPagarBean.limpar}" />
+
+					<p:commandButton value="Salvar" action="#{clienteBean.salvar}"
+						update="listaClientes cadastraCliente" icon="ui-icon-disk"
+						id="salvar" oncomplete="PF('dialogCadastroCliente').hide();" />
+
+					<p:commandButton value="Cancelar" action="#{clienteBean.limpar}"
+						update="painelCadastraCliente"
+						oncomplete="PF('dialogCadastroCliente').hide();" />
+				</p:confirmDialog>
+
+			</h:form>
+		</p:panel>
+
+		<p:panel header="Lista de Clientes">
+
+			<h:form id="listaClientes">
+				<p:dataTable id="tableCliente" var="cliente"
+					value="#{clienteBean.clientes}"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+					paginator="true" paginatorPosition="bottom" rows="10"
+					style="margin-bottom:20px">
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Nome" />
+						</f:facet>
+						<h:outputText value="#{cliente.nomeCliente}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Sexo" />
+						</f:facet>
+						<h:outputText value="#{cliente.sexoCliente}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Idade" />
+						</f:facet>
+						<h:outputText value="#{cliente.idadeCliente}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="CPF" />
+						</f:facet>
+						<h:outputText value="#{cliente.cpfCliente}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Endereço" />
+						</f:facet>
+						<h:outputText value="#{cliente.enderecoCliente}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Bairro" />
+						</f:facet>
+						<h:outputText value="#{cliente.bairroCliente}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Cidade" />
+						</f:facet>
+						<h:outputText value="#{cliente.cidadeCliente}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="UF" />
+						</f:facet>
+						<h:outputText value="#{cliente.ufCliente.label}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Telefone" />
+						</f:facet>
+						<h:outputText value="#{cliente.telefoneCliente}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Celular" />
+						</f:facet>
+						<h:outputText value="#{cliente.celularCliente}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Email" />
+						</f:facet>
+						<h:outputText value="#{cliente.emailCliente}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Data de Cadastro" />
+						</f:facet>
+						<h:outputText value="#{cliente.dataCadastroCliente}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Última atualização" />
+						</f:facet>
+						<h:outputText value="#{cliente.lastUpdate}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Editar" />
+						</f:facet>
+						<p:commandButton icon=" ui-icon-pencil"
+							update="listaClientes cadastraCliente"
+							actionListener="#{clienteBean.prepararModel(cliente)}"
+							oncomplete="PF('dialogCadastroCliente').show();" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Excluir" />
+						</f:facet>
+						<p:commandButton icon="ui-icon-closethick"
+							update="listaClientes cadastraCliente"
+							actionListener="#{clienteBean.prepararModel(cliente)}"
+							oncomplete="PF('dialogExcluirCliente').show();" />
+					</p:column>
+				</p:dataTable>
+
+				<p:confirmDialog message="Deseja realmente excluir este cliente?"
+					widgetVar="dialogExcluirCliente">
+					<p:commandButton value="Sim" action="#{clienteBean.excluir}"
+						oncomplete="PF('dialogExcluirCliente').hide();"
+						update="listaClientes cadastraCliente" />
+					<p:commandButton value="Não"
+						oncomplete="PF('dialogExcluirCliente').hide();" />
+				</p:confirmDialog>
+
+			</h:form>
+
+		</p:panel>
+
+	</ui:define>
+
+</ui:composition>

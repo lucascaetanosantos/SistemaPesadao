@@ -5,18 +5,18 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-	<ui:define name="titulo"> Compra</ui:define>
+	<ui:define name="titulo"> Venda</ui:define>
 
 	<ui:define name="principal">
 
-		<h:form id="cadastraPedidoCompra">
+		<h:form id="cadastraPedidoVenda">
 			<p:panel header="Cadastrar pedido">
 				<p:growl id="growl" life="2000" />
 
 				<h:panelGrid columns="2" cellpadding="5">
-					<p:outputLabel for="fornecedor" value="Fornecedor: " />
-					<p:selectOneMenu id="fornecedor"
-						value="#{pedidoCompraBean.pedidoCompra.fornecedorPedidoCompra}"
+					<p:outputLabel for="cliente" value="Cliente: " />
+					<p:selectOneMenu id="cliente"
+						value="#{pedidoVendaBean.pedidoVenda.fornecedorPedidoVenda}"
 						converter="fornecedorConverter"
 						onchange="PF('blockItemCompra').hide()">
 						<f:selectItem itemLabel="Selecione..." itemValue="#{null}" />
@@ -60,7 +60,8 @@
 						<f:facet name="header">
 							<h:outputText value="Quantidade" />
 						</f:facet>
-						<h:outputText value="#{itemCompra.quantidadeItemCompra}" />
+						<h:outputText
+							value="#{itemCompra.quantidadeItemCompra}" />
 					</p:column>
 
 					<p:column>
@@ -74,7 +75,8 @@
 						<f:facet name="header">
 							<h:outputText value="Data cadastro" />
 						</f:facet>
-						<h:outputText value="#{itemCompra.dataCadastroItemCompra}" />
+						<h:outputText
+							value="#{itemCompraBean.itemCompra.dataCadastroItemCompra}" />
 					</p:column>
 
 					<p:column>
@@ -99,13 +101,14 @@
 				<p:commandButton value="Adicionar item" id="cadastrarItemCompra"
 					styleClass="ui-priority-primary"
 					oncomplete="PF('dialogCadastroItemCompra').show();"
-					actionListener="#{pedidoCompraBean.prepararModel}" />
+					actionListener="#{pedidoCompraBean.preparar(pedidoCompra)}" />
 
 				<p:confirmDialog widgetVar="dialogCadastroItemCompra"
 					header="Novo item"
 					message="Preencha todos os campos marcados com *.">
 
 					<h:panelGrid columns="2" cellpadding="5">
+
 
 						<p:outputLabel for="produto" value="Produto: " />
 						<p:selectOneMenu id="produto"
@@ -127,15 +130,14 @@
 							required="true" requiredMessage="Preencha o campo valor"
 							value="#{itemCompraBean.itemCompra.valorItemCompra}">
 						</p:inputText>
-
 					</h:panelGrid>
 
 					<p:commandButton value="Salvar" action="#{itemCompraBean.salvar}"
 						update="itemCompra" icon="ui-icon-disk" id="salvar"
 						oncomplete="PF('dialogCadastroItemCompra').hide();">
 						<f:setPropertyActionListener
-							target="#{itemCompraBean.itemCompra.pedidoItemCompra.id}"
-							value="#{1}" />
+							target="#{itemCompraBean.itemCompra.pedidoItemCompra}"
+							value="#{pedidoCompra}" />
 					</p:commandButton>
 
 					<p:commandButton value="Cancelar"
