@@ -138,7 +138,7 @@
 					</h:panelGrid>
 					<!-- Final cadastro de compra*********************************************************** -->
 
-					<p:commandButton value="Salvar" action="#{itemCompraBean.salvar}"
+					<p:commandButton value="Salvar" action="#{itemCompraBean.salvar(pedidoCompra)}"
 						update="itemCompra" icon="ui-icon-disk" id="salvar"
 						oncomplete="PF('dialogCadastroItemCompra').hide();">
 						<f:setPropertyActionListener

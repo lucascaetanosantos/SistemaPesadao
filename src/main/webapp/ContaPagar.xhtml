@@ -24,75 +24,8 @@
 						<p:outputLabel for="nome" value="Nome: " />
 						<p:inputText id="nome" type="text" title="Nome" required="true"
 							requiredMessage="Preencha o campo Nome."
-							value="#{contaPagarBean.contaPagar.nomeContaPagar}">
+							value="#{contaPagarBean.contaPagar.descricaoContaPagar}">
 						</p:inputText>
-
-						<p:outputLabel for="sexo" value="Sexo: " />
-						<p:outputLabel for="sexo">
-							<p:selectOneRadio id="sexo"
-								value="#{contaPagarBean.contaPagar.sexoContaPagar}">
-								<f:selectItem itemLabel="Masculino" itemValue="MASCULINO"></f:selectItem>
-								<f:selectItem itemLabel="Feminino" itemValue="FEMININO"></f:selectItem>
-							</p:selectOneRadio>
-						</p:outputLabel>
-
-						<p:outputLabel for="idade" value="Idade: " />
-						<p:inputText id="idade" type="text" title="Idade" required="true"
-							requiredMessage="Preencha o campo idade."
-							value="#{contaPagarBean.contaPagar.idadeContaPagar}">
-						</p:inputText>
-
-						<p:outputLabel for="cpf" value="CPF: " />
-						<p:inputMask id="cpf" mask="999.999.999-99" title="CPF"
-							required="true" requiredMessage="Preencha o campo CPF."
-							value="#{contaPagarBean.contaPagar.cpfContaPagar}">
-						</p:inputMask>
-
-						<p:outputLabel for="estado" value="Estado: "></p:outputLabel>
-						<p:selectOneMenu id="estado"
-							value="#{contaPagarBean.contaPagar.ufContaPagar}" required="true"
-							requiredMessage="Informe o Estado: ">
-							<f:selectItem itemLabel="Selecione..." itemValue="#{null}" />
-							<f:selectItems value="#{contaPagarBean.estados}" var="estado"
-								itemLabel="#{estado.label}" itemValue="#{estado}" />
-						</p:selectOneMenu>
-
-						<p:outputLabel for="cidade" value="Cidade: " />
-						<p:inputText id="cidade" type="text" title="Cidade"
-							required="true" requiredMessage="Preencha o campo cidade."
-							value="#{contaPagarBean.contaPagar.cidadeContaPagar}">
-						</p:inputText>
-
-						<p:outputLabel for="bairro" value="Bairro: " />
-						<p:inputText id="bairro" type="text" title="Bairro"
-							required="true" requiredMessage="Preencha o campo bairro."
-							value="#{contaPagarBean.contaPagar.bairroContaPagar}">
-						</p:inputText>
-
-						<p:outputLabel for="endereco" value="Endereço : " />
-						<p:inputText id="endereco" type="text" title="Endereço"
-							required="true" requiredMessage="Preencha o campo endereço."
-							value="#{contaPagarBean.contaPagar.enderecoContaPagar}">
-						</p:inputText>
-
-						<p:outputLabel for="telefone" value="Telefone: " />
-						<p:inputMask id="telefone" mask="(99) 9999-9999" title="Telefone"
-							required="true" requiredMessage="Preencha o Campo telefone."
-							value="#{contaPagarBean.contaPagar.telefoneContaPagar}">
-						</p:inputMask>
-
-						<p:outputLabel for="celular" value="Celular: " />
-						<p:inputMask id="celular" mask="(99) 9 9999-9999" title="Celular"
-							required="true" requiredMessage="Preencha o Campo celular."
-							value="#{contaPagarBean.contaPagar.celularContaPagar}">
-						</p:inputMask>
-
-						<p:outputLabel for="email" value="E-mail: " />
-						<p:inputText id="email" type="text" title="Email*" required="true"
-							requiredMessage="Preencha o campo e-mail."
-							value="#{contaPagarBean.contaPagar.emailContaPagar}">
-						</p:inputText>
-
 					</h:panelGrid>
 
 					<p:commandButton value="Limpar" type="reset"
@@ -115,7 +48,6 @@
 
 			<h:form id="listaContaPagars">
 				<p:dataTable id="tableContaPagar" var="contaPagar"
-					value="#{contaPagarBean.contaPagars}"
 					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
 					paginator="true" paginatorPosition="bottom" rows="10"
 					style="margin-bottom:20px">
