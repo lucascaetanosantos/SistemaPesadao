@@ -14,6 +14,7 @@ import javax.faces.context.FacesContext;
 import br.com.pesadao.dao.ItemCompraDao;
 import br.com.pesadao.dao.ProdutoDao;
 import br.com.pesadao.model.ItemCompra;
+import br.com.pesadao.model.PedidoCompra;
 import br.com.pesadao.model.Produto;
 
 /**
@@ -35,7 +36,7 @@ public class ItemCompraBean {
 
 	public String salvar() {
 		new ItemCompraDao().salvar(itemCompra);
-		itensCompra = new ItemCompraDao().listarItensCompra();
+		itensCompra = new ItemCompraDao().listarItensCompra(pedidoCompraBean.getUltimoPedido());
 		itemCompra = new ItemCompra();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Item salvo com sucesso!"));
 		return "pedido_template";
@@ -46,7 +47,7 @@ public class ItemCompraBean {
 		new ItemCompraDao().salvar(itemCompra);
 		produtos = new ProdutoDao().listarProdutos();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Item excluído com sucesso!"));
-		itensCompra = new ItemCompraDao().listarItensCompra();
+		itensCompra = new ItemCompraDao().listarItensCompra(pedidoCompraBean.getUltimoPedido());
 	}
 
 	public void prepararModel(ItemCompra itemCompra) {
