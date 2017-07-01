@@ -29,6 +29,7 @@ public class ContaPagar implements Serializable {
 	private Integer id;
 	private PedidoCompra pedidoContaPagar;
 	private double valorContaPagar;
+	private String descricaoContaPagar;
 	private Date dataCadastroContaPagar = new Date();
 
 	/**
@@ -42,13 +43,16 @@ public class ContaPagar implements Serializable {
 	 * @param id
 	 * @param pedidoContaPagar
 	 * @param valorContaPagar
+	 * @param descricaoContaPagar
 	 * @param dataCadastroContaPagar
 	 */
-	public ContaPagar(Integer id, PedidoCompra pedidoContaPagar, double valorContaPagar, Date dataCadastroContaPagar) {
+	public ContaPagar(Integer id, PedidoCompra pedidoContaPagar, double valorContaPagar, String descricaoContaPagar,
+			Date dataCadastroContaPagar) {
 		super();
 		this.id = id;
 		this.pedidoContaPagar = pedidoContaPagar;
 		this.valorContaPagar = valorContaPagar;
+		this.descricaoContaPagar = descricaoContaPagar;
 		this.dataCadastroContaPagar = dataCadastroContaPagar;
 	}
 
@@ -102,6 +106,21 @@ public class ContaPagar implements Serializable {
 	}
 
 	/**
+	 * @return the descricaoContaPagar
+	 */
+	public String getDescricaoContaPagar() {
+		return descricaoContaPagar;
+	}
+
+	/**
+	 * @param descricaoContaPagar
+	 *            the descricaoContaPagar to set
+	 */
+	public void setDescricaoContaPagar(String descricaoContaPagar) {
+		this.descricaoContaPagar = descricaoContaPagar;
+	}
+
+	/**
 	 * @return the dataCadastroContaPagar
 	 */
 	@Temporal(TemporalType.DATE)
@@ -126,12 +145,7 @@ public class ContaPagar implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((dataCadastroContaPagar == null) ? 0 : dataCadastroContaPagar.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((pedidoContaPagar == null) ? 0 : pedidoContaPagar.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(valorContaPagar);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
 
@@ -149,22 +163,10 @@ public class ContaPagar implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		ContaPagar other = (ContaPagar) obj;
-		if (dataCadastroContaPagar == null) {
-			if (other.dataCadastroContaPagar != null)
-				return false;
-		} else if (!dataCadastroContaPagar.equals(other.dataCadastroContaPagar))
-			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
-			return false;
-		if (pedidoContaPagar == null) {
-			if (other.pedidoContaPagar != null)
-				return false;
-		} else if (!pedidoContaPagar.equals(other.pedidoContaPagar))
-			return false;
-		if (Double.doubleToLongBits(valorContaPagar) != Double.doubleToLongBits(other.valorContaPagar))
 			return false;
 		return true;
 	}
@@ -177,7 +179,8 @@ public class ContaPagar implements Serializable {
 	@Override
 	public String toString() {
 		return "ContaPagar [id=" + id + ", pedidoContaPagar=" + pedidoContaPagar + ", valorContaPagar="
-				+ valorContaPagar + ", dataCadastroContaPagar=" + dataCadastroContaPagar + "]";
+				+ valorContaPagar + ", descricaoContaPagar=" + descricaoContaPagar + ", dataCadastroContaPagar="
+				+ dataCadastroContaPagar + "]";
 	}
 
 }

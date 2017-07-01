@@ -60,7 +60,7 @@ public class PedidoCompraBean {
 		for(PedidoCompra ped : pedidosCompra){
 			setUltimoPedido(ped);
 		}
-		System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"+pedidoCompra.getId());
+		System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"+getUltimoPedido().getId());
 	}
 	
 	

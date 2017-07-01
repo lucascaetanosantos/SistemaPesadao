@@ -36,10 +36,11 @@ public class ItemCompraBean {
 
 	public String salvar() {
 		new ItemCompraDao().salvar(itemCompra);
+		System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  HELP      "+pedidoCompraBean.getUltimoPedido());
 		itensCompra = new ItemCompraDao().listarItensCompra(pedidoCompraBean.getUltimoPedido());
 		itemCompra = new ItemCompra();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Item salvo com sucesso!"));
-		return "pedido_template";
+		return "contapagar";
 	}
 
 	public void excluir() {

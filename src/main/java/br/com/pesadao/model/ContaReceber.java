@@ -20,7 +20,7 @@ import javax.persistence.TemporalType;
  *
  */
 @Entity
-public class ContaReceber implements Serializable{
+public class ContaReceber implements Serializable {
 
 	/**
 	 * 
@@ -29,6 +29,7 @@ public class ContaReceber implements Serializable{
 	private Integer id;
 	private PedidoVenda pedidoContaReceber;
 	private double valorContaReceber;
+	private String descricaoContaReceber;
 	private Date dataCadastroContaReceber = new Date();
 
 	/**
@@ -42,14 +43,16 @@ public class ContaReceber implements Serializable{
 	 * @param id
 	 * @param pedidoContaReceber
 	 * @param valorContaReceber
+	 * @param descricaoContaReceber
 	 * @param dataCadastroContaReceber
 	 */
 	public ContaReceber(Integer id, PedidoVenda pedidoContaReceber, double valorContaReceber,
-			Date dataCadastroContaReceber) {
+			String descricaoContaReceber, Date dataCadastroContaReceber) {
 		super();
 		this.id = id;
 		this.pedidoContaReceber = pedidoContaReceber;
 		this.valorContaReceber = valorContaReceber;
+		this.descricaoContaReceber = descricaoContaReceber;
 		this.dataCadastroContaReceber = dataCadastroContaReceber;
 	}
 
@@ -63,7 +66,8 @@ public class ContaReceber implements Serializable{
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(Integer id) {
 		this.id = id;
@@ -79,7 +83,8 @@ public class ContaReceber implements Serializable{
 	}
 
 	/**
-	 * @param pedidoContaReceber the pedidoContaReceber to set
+	 * @param pedidoContaReceber
+	 *            the pedidoContaReceber to set
 	 */
 	public void setPedidoContaReceber(PedidoVenda pedidoContaReceber) {
 		this.pedidoContaReceber = pedidoContaReceber;
@@ -93,10 +98,26 @@ public class ContaReceber implements Serializable{
 	}
 
 	/**
-	 * @param valorContaReceber the valorContaReceber to set
+	 * @param valorContaReceber
+	 *            the valorContaReceber to set
 	 */
 	public void setValorContaReceber(double valorContaReceber) {
 		this.valorContaReceber = valorContaReceber;
+	}
+
+	/**
+	 * @return the descricaoContaReceber
+	 */
+	public String getDescricaoContaReceber() {
+		return descricaoContaReceber;
+	}
+
+	/**
+	 * @param descricaoContaReceber
+	 *            the descricaoContaReceber to set
+	 */
+	public void setDescricaoContaReceber(String descricaoContaReceber) {
+		this.descricaoContaReceber = descricaoContaReceber;
 	}
 
 	/**
@@ -108,13 +129,16 @@ public class ContaReceber implements Serializable{
 	}
 
 	/**
-	 * @param dataCadastroContaReceber the dataCadastroContaReceber to set
+	 * @param dataCadastroContaReceber
+	 *            the dataCadastroContaReceber to set
 	 */
 	public void setDataCadastroContaReceber(Date dataCadastroContaReceber) {
 		this.dataCadastroContaReceber = dataCadastroContaReceber;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -125,7 +149,9 @@ public class ContaReceber implements Serializable{
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -145,15 +171,15 @@ public class ContaReceber implements Serializable{
 		return true;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
 		return "ContaReceber [id=" + id + ", pedidoContaReceber=" + pedidoContaReceber + ", valorContaReceber="
-				+ valorContaReceber + ", dataCadastroContaReceber=" + dataCadastroContaReceber + "]";
+				+ valorContaReceber + ", descricaoContaReceber=" + descricaoContaReceber + ", dataCadastroContaReceber="
+				+ dataCadastroContaReceber + "]";
 	}
-
-	
-	
 }
