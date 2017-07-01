@@ -33,21 +33,19 @@ public class PedidoCompraBean {
 	private List<PedidoCompra> pedidosCompra = new ArrayList<PedidoCompra>();
 	private List<ItemCompra> itensCompra = new ArrayList<ItemCompra>();
 	private List<Fornecedor> fornecedores;
+	private PedidoCompra ultimoPedido;
 
 	public PedidoCompraBean() {
 		pedidosCompra = new PedidoCompraDao().listarPedidoCompra();
 		fornecedores = new FornecedorDao().listarFornecedores();
 	}
-
+	
 	public String salvar() {
-		if(pedidoCompra.getFornecedorPedidoCompra()==null){
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Selecione um fornecedor válido!"));
-		}
 		new PedidoCompraDao().salvar(pedidoCompra);
 		pedidosCompra = new PedidoCompraDao().listarPedidoCompra();
 		prepararModel(pedidoCompra);
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pedido salvo com sucesso!! "));
-		return "pedidocompralist";
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pedido salvo com sucesso!"));
+		return "pedidocompra";
 	}
 
 	public void prepararModel(PedidoCompra pedidoCompra) {
@@ -57,6 +55,26 @@ public class PedidoCompraBean {
 	public String getDataAtual() {
 		return new SimpleDateFormat("dd/MM/yyyy").format(new Date());
 	}
+	
+	public void resgataUltimoRegistro(){
+		for(PedidoCompra ped : pedidosCompra){
+			setUltimoPedido(ped);
+		}
+		System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"+pedidoCompra.getId());
+	}
+	
+	
+	public PedidoCompra getUltimoPedido() {
+		return ultimoPedido;
+	}
+	
+	public void setUltimoPedido(PedidoCompra ultimoPedido) {
+		this.ultimoPedido = ultimoPedido;
+	}
+	
+	
+	
+	
 	
 	/**
 	 * @return the pedidosCompra
