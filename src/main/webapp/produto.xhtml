@@ -20,7 +20,8 @@
 					header="Cadastrar Produto"
 					message="Preencha todos os campos marcados com *.">
 
-					<h:panelGrid columns="2" cellpadding="5">
+					<h:panelGrid columns="2" cellpadding="5"
+						id="painelCadastraProduto">
 						<p:outputLabel for="descricao" value="Descrição: " />
 						<p:inputText id="descricao" type="text" title="Descrição" required="true"
 							requiredMessage="Preencha o campo descricao"
@@ -53,7 +54,8 @@
 						update="listaProdutos cadastraProduto" icon="ui-icon-disk"
 						id="salvar" oncomplete="PF('dialogCadastroProduto').hide();" />
 
-					<p:commandButton value="Cancelar"
+					<p:commandButton value="Cancelar" action="#{produtoBean.limpar}"
+						update="painelCadastraProduto"
 						oncomplete="PF('dialogCadastroProduto').hide();" />
 				</p:confirmDialog>
 
@@ -117,7 +119,8 @@
 						<f:facet name="header">
 							<h:outputText value="Editar" />
 						</f:facet>
-						<p:commandButton icon=" ui-icon-pencil" update="@form"
+						<p:commandButton icon=" ui-icon-pencil"
+							update="listaProdutos cadastraProduto"
 							actionListener="#{produtoBean.prepararModel(produto)}"
 							oncomplete="PF('dialogCadastroProduto').show();" />
 					</p:column>

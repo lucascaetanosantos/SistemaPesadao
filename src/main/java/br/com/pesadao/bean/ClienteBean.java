@@ -80,8 +80,7 @@ public class ClienteBean {
 	}
 
 	/**
-	 * @param cliente
-	 *            the cliente to set
+	 * @param cliente the cliente to set
 	 */
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
@@ -95,8 +94,7 @@ public class ClienteBean {
 	}
 
 	/**
-	 * @param estados
-	 *            the estados to set
+	 * @param estados the estados to set
 	 */
 	public void setEstados(List<Estado> estados) {
 		this.estados = estados;
@@ -110,8 +108,7 @@ public class ClienteBean {
 	}
 
 	/**
-	 * @param sexos
-	 *            the sexos to set
+	 * @param sexos the sexos to set
 	 */
 	public void setSexos(List<Sexo> sexos) {
 		this.sexos = sexos;

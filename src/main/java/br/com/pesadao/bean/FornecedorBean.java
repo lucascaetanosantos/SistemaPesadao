@@ -32,6 +32,7 @@ public class FornecedorBean {
 	private List<Fornecedor> fornecedores = new ArrayList<Fornecedor>();
 
 	public FornecedorBean() {
+		// TODO Auto-generated constructor stub
 		fornecedores = new FornecedorDao().listarFornecedores();
 	}
 
@@ -47,21 +48,22 @@ public class FornecedorBean {
 		this.fornecedor = fornecedor;
 		return "fornecedor";
 	}
-	
-	public void limpar(){
-		fornecedor = new Fornecedor();
-	}
 
 	public String excluir() {
 		this.fornecedor.setActive(false);
 		new FornecedorDao().salvar(fornecedor);
 		fornecedores = new FornecedorDao().listarFornecedores();
+		limpar();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Fornecedor excluído com sucesso!"));
 		return "fornecedor";
 	}
 	
 	public void prepararModel(Fornecedor fornecedor) {
 		this.fornecedor = fornecedor;
+	}
+	
+	public void limpar(){
+		this.fornecedor = new Fornecedor();
 	}
 
 	public String getDataAtual() {

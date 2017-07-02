@@ -63,7 +63,7 @@ public class LoginBean {
 		this.usuario.setNome(this.nomeUsuario);
 		this.usuario.setDataLogin(new Date());
 		this.loggedIn = true;
-		return "cliente?faces-redirect=true";
+		return "template?faces-redirect=true";
 	}
 
 	public boolean isLoggedIn() {

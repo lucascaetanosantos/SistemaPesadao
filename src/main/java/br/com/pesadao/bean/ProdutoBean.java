@@ -43,19 +43,24 @@ public class ProdutoBean {
 	
 	public String editar(Produto produto){
 		this.produto = produto;
-		return "produtocad?faces-redirect=true";
+		return "produto";
 	}
 	
 	public String excluir() {
 		this.produto.setActive(false);
 		new ProdutoDao().salvar(produto);
 		produtos = new ProdutoDao().listarProdutos();
+		limpar();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Produto excluído com sucesso!"));
-		return "produtolist";
+		return "produto";
 	}
 
 	public void prepararModel(Produto produto) {
 		this.produto = produto;
+	}
+	
+	public void limpar() {
+		this.produto = new Produto();
 	}
 	
 	public String getDataAtual() {

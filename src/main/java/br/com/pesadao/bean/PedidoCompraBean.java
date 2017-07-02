@@ -40,12 +40,10 @@ public class PedidoCompraBean {
 	}
 
 	public void salvar() {
-		if (pedidoCompra.getFornecedorPedidoCompra() != null) {
-			new PedidoCompraDao().salvar(pedidoCompra);
-			pedidosCompra = new PedidoCompraDao().listarPedidoCompra();
-			prepararModel(pedidoCompra);
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pedido salvo com sucesso!! "));
-		}
+		new PedidoCompraDao().salvar(pedidoCompra);
+		pedidosCompra = new PedidoCompraDao().listarPedidoCompra();
+		prepararModel(pedidoCompra);
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pedido salvo com sucesso!! "));
 	}
 
 	public void prepararModel(PedidoCompra pedidoCompra) {
@@ -78,7 +76,8 @@ public class PedidoCompraBean {
 	}
 
 	/**
-	 * @param pedidosCompra the pedidosCompra to set
+	 * @param pedidosCompra
+	 *            the pedidosCompra to set
 	 */
 	public void setPedidosCompra(List<PedidoCompra> pedidosCompra) {
 		this.pedidosCompra = pedidosCompra;
@@ -92,7 +91,8 @@ public class PedidoCompraBean {
 	}
 
 	/**
-	 * @param itensCompra the itensCompra to set
+	 * @param itensCompra
+	 *            the itensCompra to set
 	 */
 	public void setItensCompra(List<ItemCompra> itensCompra) {
 		this.itensCompra = itensCompra;
@@ -106,7 +106,8 @@ public class PedidoCompraBean {
 	}
 
 	/**
-	 * @param pedidoCompra the pedidoCompra to set
+	 * @param pedidoCompra
+	 *            the pedidoCompra to set
 	 */
 	public void setPedidoCompra(PedidoCompra pedidoCompra) {
 		this.pedidoCompra = pedidoCompra;
@@ -120,7 +121,8 @@ public class PedidoCompraBean {
 	}
 
 	/**
-	 * @param itemCompra the itemCompra to set
+	 * @param itemCompra
+	 *            the itemCompra to set
 	 */
 	public void setItemCompra(ItemCompra itemCompra) {
 		this.itemCompra = itemCompra;
@@ -134,7 +136,8 @@ public class PedidoCompraBean {
 	}
 
 	/**
-	 * @param pedidosCompras the pedidosCompras to set
+	 * @param pedidosCompras
+	 *            the pedidosCompras to set
 	 */
 	public void setPedidosCompras(List<PedidoCompra> pedidosCompras) {
 		this.pedidosCompra = pedidosCompras;
@@ -148,7 +151,8 @@ public class PedidoCompraBean {
 	}
 
 	/**
-	 * @param itemCompras the itemCompras to set
+	 * @param itemCompras
+	 *            the itemCompras to set
 	 */
 	public void setItemCompras(List<ItemCompra> itemCompras) {
 		this.itensCompra = itemCompras;
@@ -162,7 +166,8 @@ public class PedidoCompraBean {
 	}
 
 	/**
-	 * @param fornecedores the fornecedores to set
+	 * @param fornecedores
+	 *            the fornecedores to set
 	 */
 	public void setFornecedores(List<Fornecedor> fornecedores) {
 		this.fornecedores = fornecedores;
