@@ -28,7 +28,12 @@ public class ItemCompraDao {
 	@SuppressWarnings("unchecked")
 	public List<ItemCompra> listarItensCompra(int pedidoCompra) {
 		EntityManager entityManager = JPAUtil.getEntityManager();
+<<<<<<< HEAD
 		Query query = entityManager.createQuery("from ItemCompra where pedidoItemCompra_id="+pedidoCompra);
+=======
+		Query query = entityManager.createQuery("from ItemCompra where pedidoItemCompra= :pedido  Order By id");
+		query.setParameter("pedido", pedidoCompra);
+>>>>>>> branch 'master' of https://github.com/lucascaetanosantos/SistemaPesadao.git
 		return query.getResultList();
 	}
 	

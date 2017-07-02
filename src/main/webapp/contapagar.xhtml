@@ -1,0 +1,94 @@
+<ui:composition template="/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo"> Conta a pagar</ui:define>
+
+	<ui:define name="principal">
+		<p:panel>
+			<h:form id="cadastraContaPagar">
+				<p:growl id="growl" life="2000" />
+
+				<p:commandButton value="Cadastrar conta a pagar" id="cadastrarContaPagar"
+					styleClass="ui-priority-primary"
+					oncomplete="PF('dialogCadastroContaPagar').show();" />
+
+				<p:confirmDialog widgetVar="dialogCadastroContaPagar"
+					header="Cadastrar ContaPagar"
+					message="Preencha todos os campos marcados com *.">
+
+					<h:panelGrid columns="2" cellpadding="5">
+						<p:outputLabel for="descricao" value="Descrição: " />
+						<p:inputText id="descricao" type="text" title="descricao" required="true"
+							requiredMessage="Preencha o campo descricao."
+							value="#{contaPagarBean.contaPagar.descricaoContaPagar}">
+						</p:inputText>
+						
+						<p:outputLabel for="valor" value="Valor: " />
+						<p:inputText id="valor" type="text" title="valor" required="true"
+							requiredMessage="Preencha o campo valor."
+							value="#{contaPagarBean.contaPagar.valorContaPagar}">
+						</p:inputText>
+
+					</h:panelGrid>
+					<p:commandButton value="Salvar" action="#{contaPagarBean.salvar}"
+						update="listaContaPagars cadastraContaPagar" icon="ui-icon-disk"
+						id="salvar" oncomplete="PF('dialogCadastroContaPagar').hide();" />
+
+					<p:commandButton value="Cancelar"
+						oncomplete="PF('dialogCadastroContaPagar').hide();" />
+				</p:confirmDialog>
+
+
+			</h:form>
+		</p:panel>
+
+
+		<p:panel header="Lista de ContaPagars">
+
+			<h:form id="listaContaPagars">
+				<p:dataTable id="tableContaPagar" var="contaPagar"
+					value="#{contaPagarBean.contasPagar}"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+					paginator="true" paginatorPosition="bottom" rows="10"
+					style="margin-bottom:20px">
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Pedido" />
+						</f:facet>
+						<h:outputText value="#{contaPagar.pedidoContaPagar.id}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Valor" />
+						</f:facet>
+						<h:outputText value="#{contaPagar.valorContaPagar}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Descrição" />
+						</f:facet>
+						<h:outputText value="#{contaPagar.descricaoContaPagar}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Data de Cadastro" />
+						</f:facet>
+						<h:outputText value="#{contaPagar.dataCadastroContaPagar}" />
+					</p:column>
+
+				</p:dataTable>
+
+			</h:form>
+
+		</p:panel>
+	</ui:define>
+
+</ui:composition>

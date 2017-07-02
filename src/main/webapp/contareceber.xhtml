@@ -1,0 +1,94 @@
+<ui:composition template="/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo"> Conta a receber</ui:define>
+
+	<ui:define name="principal">
+		<p:panel>
+			<h:form id="cadastraContaReceber">
+				<p:growl id="growl" life="2000" />
+
+				<p:commandButton value="Cadastrar conta a receber" id="cadastrarContaReceber"
+					styleClass="ui-priority-primary"
+					oncomplete="PF('dialogCadastroContaReceber').show();" />
+
+				<p:confirmDialog widgetVar="dialogCadastroContaReceber"
+					header="Cadastrar ContaReceber"
+					message="Preencha todos os campos marcados com *.">
+
+					<h:panelGrid columns="2" cellpadding="5">
+						<p:outputLabel for="descricao" value="Descrição: " />
+						<p:inputText id="descricao" type="text" title="descricao" required="true"
+							requiredMessage="Preencha o campo descricao."
+							value="#{contaReceberBean.contaReceber.descricaoContaReceber}">
+						</p:inputText>
+						
+						<p:outputLabel for="valor" value="Valor: " />
+						<p:inputText id="valor" type="text" title="valor" required="true"
+							requiredMessage="Preencha o campo valor."
+							value="#{contaReceberBean.contaReceber.valorContaReceber}">
+						</p:inputText>
+
+					</h:panelGrid>
+					<p:commandButton value="Salvar" action="#{contaReceberBean.salvar}"
+						update="listaContaRecebers cadastraContaReceber" icon="ui-icon-disk"
+						id="salvar" oncomplete="PF('dialogCadastroContaReceber').hide();" />
+
+					<p:commandButton value="Cancelar"
+						oncomplete="PF('dialogCadastroContaReceber').hide();" />
+				</p:confirmDialog>
+
+
+			</h:form>
+		</p:panel>
+
+
+		<p:panel header="Lista de ContaRecebers">
+
+			<h:form id="listaContaRecebers">
+				<p:dataTable id="tableContaReceber" var="contaReceber"
+					value="#{contaReceberBean.contasReceber}"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+					paginator="true" paginatorPosition="bottom" rows="10"
+					style="margin-bottom:20px">
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Pedido" />
+						</f:facet>
+						<h:outputText value="#{contaReceber.pedidoContaReceber.id}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Valor" />
+						</f:facet>
+						<h:outputText value="#{contaReceber.valorContaReceber}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Descrição" />
+						</f:facet>
+						<h:outputText value="#{contaReceber.descricaoContaReceber}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Data de Cadastro" />
+						</f:facet>
+						<h:outputText value="#{contaReceber.dataCadastroContaReceber}" />
+					</p:column>
+
+				</p:dataTable>
+
+			</h:form>
+
+		</p:panel>
+	</ui:define>
+
+</ui:composition>

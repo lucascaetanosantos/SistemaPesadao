@@ -46,6 +46,7 @@ public class ItemCompraBean {
 		new ItemCompraDao().salvar(itemCompra);
 		produtos = new ProdutoDao().listarProdutos();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Item excluído com sucesso!"));
+		itensCompra = new ItemCompraDao().listarItensCompra(pedidoCompraBean.getUltimoPedido().getId());
 	}
 
 	public void prepararModel(ItemCompra itemCompra) {
