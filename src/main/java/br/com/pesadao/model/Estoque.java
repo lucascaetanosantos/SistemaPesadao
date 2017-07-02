@@ -6,6 +6,7 @@ package br.com.pesadao.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -91,6 +92,7 @@ public class Estoque implements Serializable {
 	/**
 	 * @return the quantidadeEstoque
 	 */
+	@Column(columnDefinition = "INT DEFAULT 0")
 	public int getQuantidadeEstoque() {
 		return quantidadeEstoque;
 	}
@@ -121,6 +123,7 @@ public class Estoque implements Serializable {
 	/**
 	 * @return the totalEstoque
 	 */
+	@Column(columnDefinition = "DOUBLE DEFAULT 0")
 	public double getTotalEstoque() {
 		return totalEstoque;
 	}

@@ -6,6 +6,7 @@ package br.com.pesadao.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -93,6 +94,7 @@ public class ContaPagar implements Serializable {
 	/**
 	 * @return the valorContaPagar
 	 */
+	@Column(columnDefinition = "DOUBLE DEFAULT 0")
 	public double getValorContaPagar() {
 		return valorContaPagar;
 	}

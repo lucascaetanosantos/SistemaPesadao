@@ -7,11 +7,7 @@ public class triggerUtil {
 	public static void main(String[] args) {
 		TriggerDao triggerDao = new TriggerDao();
 		
-		triggerDao.triggerProdutoEstoque();
-		triggerDao.triggerPedidoCompra();
-		triggerDao.triggerPedidoVenda();
-		triggerDao.triggerItemCompra();
-		triggerDao.triggerItemVenda();
+		triggerDao.todasAsTriggersNecessarias();
 	}
 
 }
