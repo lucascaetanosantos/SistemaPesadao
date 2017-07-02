@@ -66,6 +66,10 @@ public class ClienteBean {
 		return new SimpleDateFormat("dd/MM/yyyy").format(new Date());
 	}
 
+	public void limpar(){
+		this.cliente = new Cliente();
+	}
+
 	/**
 	 * @return the cliente
 	 */

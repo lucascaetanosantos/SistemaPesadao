@@ -97,12 +97,14 @@
 
 					<p:commandButton value="Limpar" type="reset"
 						update="listaClientes cadastraCliente"
-						actionListener="fornecedorBean.limpar" />
+						actionListener="clienteBean.limpar" />
+
 					<p:commandButton value="Salvar" action="#{clienteBean.salvar}"
 						update="listaClientes cadastraCliente" icon="ui-icon-disk"
 						id="salvar" oncomplete="PF('dialogCadastroCliente').hide();" />
 
-					<p:commandButton value="Cancelar"
+					<p:commandButton value="Cancelar" action="#{clienteBean.limpar}"
+						update="cadastraCliente"
 						oncomplete="PF('dialogCadastroCliente').hide();" />
 				</p:confirmDialog>
 
@@ -224,7 +226,8 @@
 						<f:facet name="header">
 							<h:outputText value="Editar" />
 						</f:facet>
-						<p:commandButton icon=" ui-icon-pencil" update="@form"
+						<p:commandButton icon=" ui-icon-pencil"
+							update="listaClientes cadastraCliente"
 							actionListener="#{clienteBean.prepararModel(cliente)}"
 							oncomplete="PF('dialogCadastroCliente').show();" />
 					</p:column>

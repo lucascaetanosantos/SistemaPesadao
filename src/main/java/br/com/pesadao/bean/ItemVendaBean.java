@@ -35,16 +35,18 @@ public class ItemVendaBean {
 
 	public String salvar() {
 		new ItemVendaDao().salvar(itemVenda);
-		itensVenda = new ItemVendaDao().listarItensVenda();
+		itensVenda = new ItemVendaDao().listarItensVenda(itemVenda.getPedidoItemVenda().getId());
 		itemVenda = new ItemVenda();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Item salvo com sucesso!"));
-		return "pedidoVendalist";
+		return "venda";
 	}
 	
 	public void excluir() {
 		new ItemVendaDao().excluir(itemVenda);
+		new ItemVendaDao().salvar(itemVenda);
+		produtos = new ProdutoDao().listarProdutos();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Item excluído com sucesso!"));
-		itensVenda = new ItemVendaDao().listarItensVenda();
+		itensVenda = new ItemVendaDao().listarItensVenda(itemVenda.getPedidoItemVenda().getId());
 	}
 
 	public void prepararModel(ItemVenda itemVenda) {

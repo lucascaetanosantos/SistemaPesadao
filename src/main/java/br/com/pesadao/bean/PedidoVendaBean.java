@@ -3,7 +3,9 @@
  */
 package br.com.pesadao.bean;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -31,6 +33,7 @@ public class PedidoVendaBean {
 	private List<PedidoVenda> pedidosVenda = new ArrayList<PedidoVenda>();
 	private List<ItemVenda> itensVenda = new ArrayList<ItemVenda>();
 	private List<Cliente> clientes = new ArrayList<Cliente>();
+	private PedidoVenda ultimoPedido;
 
 	public PedidoVendaBean() {
 		pedidosVenda = new PedidoVendaDao().listarPedidosVenda();
@@ -38,17 +41,34 @@ public class PedidoVendaBean {
 	}
 
 	public String salvar() {
-
 		new PedidoVendaDao().salvar(pedidoVenda);
 		pedidosVenda = new PedidoVendaDao().listarPedidosVenda();
 		prepararModel(pedidoVenda);
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pedido cadastrado com sucesso!! "));
-		return "pedidovendalist";
+		return "pedidovenda";
 
 	}
 	
 	public void prepararModel(PedidoVenda pedidoVenda) {
 		this.pedidoVenda = pedidoVenda;
+	}
+
+	public String getDataAtual() {
+		return new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+	}
+	
+	public void resgataUltimoRegistro(){
+		for(PedidoVenda ped : pedidosVenda){
+			setUltimoPedido(ped);
+		}
+	}
+	
+	public PedidoVenda getUltimoPedido() {
+		return ultimoPedido;
+	}
+	
+	public void setUltimoPedido(PedidoVenda ultimoPedido) {
+		this.ultimoPedido = ultimoPedido;
 	}
 
 	/**
