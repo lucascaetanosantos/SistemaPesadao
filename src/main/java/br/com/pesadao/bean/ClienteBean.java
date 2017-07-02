@@ -23,6 +23,7 @@ import br.com.pesadao.model.Sexo;
  * @author Lucas
  *
  */
+
 @ManagedBean
 @SessionScoped
 public class ClienteBean {

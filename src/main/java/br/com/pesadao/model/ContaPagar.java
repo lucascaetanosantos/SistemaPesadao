@@ -25,7 +25,7 @@ public class ContaPagar implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -8121498291146302331L;
 	private Integer id;
 	private PedidoCompra pedidoContaPagar;
 	private double valorContaPagar;

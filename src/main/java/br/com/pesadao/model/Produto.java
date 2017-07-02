@@ -23,7 +23,7 @@ public class Produto implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -7478185936635932942L;
+	private static final long serialVersionUID = 2772573434436068129L;
 	private Integer id;
 	private Date dataCadastroProduto = new Date();
 	private String descricaoProduto;
