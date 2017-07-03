@@ -58,12 +58,12 @@ public class LoginBean {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return "/login?faces-redirect=true";
 	}
-
+	
 	public String prepararAcesso() {
 		this.usuario.setNome(this.nomeUsuario);
 		this.usuario.setDataLogin(new Date());
 		this.loggedIn = true;
-		return "template?faces-redirect=true";
+		return "index?faces-redirect=true";
 	}
 
 	public boolean isLoggedIn() {

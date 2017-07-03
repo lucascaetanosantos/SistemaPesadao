@@ -1,0 +1,28 @@
+<ui:composition template="/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo">Home</ui:define>
+
+	<ui:define name="principal">
+
+		<h:form>
+			<p:carousel numVisible="1" effect="easeInStrong"
+				headerText="Diretamente da diretoria" style="margin-bottom:0">
+				<p:tab title="Diretamente da diretoria">
+					<h:panelGrid columns="2" cellpadding="10">
+						<p:outputLabel
+							style="font-size: 20px; font-famyli: helvetica; color:red;
+						letter-spacing: 1px; font-style: italic; display:table; margin: 0 auto"
+							value="“A verdadeira motivação vem de realização, desenvolvimento pessoal, satisfação no trabalho e reconhecimento.”"/>
+					</h:panelGrid>
+				</p:tab>
+			</p:carousel>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>

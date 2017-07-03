@@ -5,14 +5,17 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-	<ui:define name="titulo"> Acesso Restrito</ui:define>
+	<ui:define name="titulo"> Compra</ui:define>
+
 	<ui:define name="principal">
 
-		<h1
-			style="font-family: Arial; color: red; margin: 0 auto; display: table; margin: 50px">
-			Restrito para: 
-			<p:outputLabel value="#{loginBean.nomeUsuario}" />
-		</h1>
+		<h:form id="cadastraPedidoVenda">
+			<p:panel header="Cadastrar pedido">
+				<p:growl id="growl" life="2000" />
+				<h:panelGrid columns="2" cellpadding="5">
 
+				</h:panelGrid>
+			</p:panel>
+		</h:form>
 	</ui:define>
 </ui:composition>
