@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package br.com.pesadao.converter;
 
 import javax.faces.component.UIComponent;

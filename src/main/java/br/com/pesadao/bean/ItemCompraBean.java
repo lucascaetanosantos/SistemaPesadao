@@ -34,11 +34,12 @@ public class ItemCompraBean {
 		produtos = new ProdutoDao().listarProdutos();
 	}
 
-	public void salvar(PedidoCompra pedidoCompra) {
+	public String salvar() {
 		new ItemCompraDao().salvar(itemCompra);
-		itensCompra = new ItemCompraDao().listarItensCompra(itemCompra.getProdutoItemCompra().getId());
+		itensCompra = new ItemCompraDao().listarItensCompra(itemCompra.getPedidoItemCompra().getId());
 		itemCompra = new ItemCompra();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Item salvo com sucesso!"));
+		return "compra";
 	}
 
 	public void excluir() {

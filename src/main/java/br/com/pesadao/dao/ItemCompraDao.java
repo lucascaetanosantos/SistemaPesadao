@@ -26,7 +26,7 @@ public class ItemCompraDao {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<ItemCompra> listarItensCompra(int pedidoCompra) {
+	public List<ItemCompra> listarItensCompra(Integer pedidoCompra) {
 		EntityManager entityManager = JPAUtil.getEntityManager();
 		Query query = entityManager.createQuery("from ItemCompra where pedidoItemCompra_id="+pedidoCompra);
 		return query.getResultList();

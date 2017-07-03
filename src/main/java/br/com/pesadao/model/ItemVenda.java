@@ -30,7 +30,7 @@ public class ItemVenda implements Serializable {
 	private Produto produtoItemVenda;
 	private PedidoVenda pedidoItemVenda;
 	private Integer quantidadeItemVenda;
-	private double valorItemCompra;
+	private double valorItemVenda;
 	private Date dataCadastroItemVenda = new Date();
 	
 
@@ -47,17 +47,17 @@ public class ItemVenda implements Serializable {
 	 * @param produtoItemVenda
 	 * @param pedidoItemVenda
 	 * @param quantidadeItemVenda
-	 * @param valorItemCompra
+	 * @param valorItemVenda
 	 * @param dataCadastroItemVenda
 	 */
 	public ItemVenda(Integer id, Produto produtoItemVenda, PedidoVenda pedidoItemVenda, Integer quantidadeItemVenda,
-			double valorItemCompra, Date dataCadastroItemVenda) {
+			double valorItemVenda, Date dataCadastroItemVenda) {
 		super();
 		this.id = id;
 		this.produtoItemVenda = produtoItemVenda;
 		this.pedidoItemVenda = pedidoItemVenda;
 		this.quantidadeItemVenda = quantidadeItemVenda;
-		this.valorItemCompra = valorItemCompra;
+		this.valorItemVenda = valorItemVenda;
 		this.dataCadastroItemVenda = dataCadastroItemVenda;
 	}
 
@@ -133,18 +133,18 @@ public class ItemVenda implements Serializable {
 
 
 	/**
-	 * @return the valorItemCompra
+	 * @return the valorItemVenda
 	 */
-	public double getValorItemCompra() {
-		return valorItemCompra;
+	public double getValorItemVenda() {
+		return valorItemVenda;
 	}
 
 
 	/**
-	 * @param valorItemCompra the valorItemCompra to set
+	 * @param valorItemVenda the valorItemVenda to set
 	 */
-	public void setValorItemCompra(double valorItemCompra) {
-		this.valorItemCompra = valorItemCompra;
+	public void setValorItemVenda(double valorItemVenda) {
+		this.valorItemVenda = valorItemVenda;
 	}
 
 
@@ -204,7 +204,7 @@ public class ItemVenda implements Serializable {
 	@Override
 	public String toString() {
 		return "ItemVenda [id=" + id + ", produtoItemVenda=" + produtoItemVenda + ", pedidoItemVenda=" + pedidoItemVenda
-				+ ", quantidadeItemVenda=" + quantidadeItemVenda + ", valorItemCompra=" + valorItemCompra
+				+ ", quantidadeItemVenda=" + quantidadeItemVenda + ", valorItemVenda=" + valorItemVenda
 				+ ", dataCadastroItemVenda=" + dataCadastroItemVenda + "]";
 	}
 }
