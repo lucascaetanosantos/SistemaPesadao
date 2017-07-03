@@ -39,11 +39,12 @@ public class PedidoCompraBean {
 		fornecedores = new FornecedorDao().listarFornecedores();
 	}
 
-	public void salvar() {
+	public String salvar() {
 		new PedidoCompraDao().salvar(pedidoCompra);
 		pedidosCompra = new PedidoCompraDao().listarPedidoCompra();
 		prepararModel(pedidoCompra);
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pedido salvo com sucesso!! "));
+		return "compra";
 	}
 
 	public void prepararModel(PedidoCompra pedidoCompra) {

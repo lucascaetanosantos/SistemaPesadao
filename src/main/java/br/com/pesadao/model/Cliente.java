@@ -66,12 +66,11 @@ public class Cliente implements Serializable {
 	 * @param lastUpdateCliente
 	 * @param active
 	 */
-	public Cliente(Integer id, String nomeCliente, Sexo sexoCliente, String idadeCliente,
+	public Cliente(String nomeCliente, Sexo sexoCliente, String idadeCliente,
 			String cpfCliente, String enderecoCliente, String bairroCliente, String cidadeCliente,
 			Estado ufCliente, String telefoneCliente, String celularCliente, String emailCliente,
-			Date dataCadastroCliente, Date lastUpdate, boolean active) {
+			Date dataCadastroCliente) {
 		super();
-		this.id = id;
 		this.nomeCliente = nomeCliente;
 		this.sexoCliente = sexoCliente;
 		this.idadeCliente = idadeCliente;
@@ -84,8 +83,6 @@ public class Cliente implements Serializable {
 		this.celularCliente = celularCliente;
 		this.emailCliente = emailCliente;
 		this.dataCadastroCliente = dataCadastroCliente;
-		this.lastUpdate = lastUpdate;
-		this.active = active;
 	}
 
 	/**

@@ -5,16 +5,153 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-	<ui:define name="titulo"> Compra</ui:define>
+	<ui:define name="titulo"> Venda</ui:define>
 
 	<ui:define name="principal">
 
+		<!-- Inicio Panel de pedidoVenda*********************************************************** -->
 		<h:form id="cadastraPedidoVenda">
 			<p:panel header="Cadastrar pedido">
 				<p:growl id="growl" life="2000" />
 				<h:panelGrid columns="2" cellpadding="5">
 
+					<p:outputLabel for="cliente" value="Cliente: " />
+					<p:selectOneMenu id="cliente"
+						value="#{pedidoVendaBean.pedidoVenda.clientePedidoVenda}"
+						converter="clienteConverter"
+						onchange="PF('blockItemVenda').hide()">
+						<f:selectItem itemLabel="Selecione..." itemValue="#{null}" />
+						<f:ajax event="change" execute="@form"
+							listener="#{pedidoVendaBean.salvar}" />
+						<f:selectItems value="#{pedidoVendaBean.clientes}"
+							var="cliente" itemLabel="#{cliente.nomeCliente}"
+							itemValue="#{cliente}" />
+					</p:selectOneMenu>
+
+					<p:outputLabel for="cadastro" value="Data de Cadastro: " />
+					<p:calendar id="cadastro"
+						value="#{pedidoVendaBean.pedidoVenda.dataCadastroPedidoVenda}"
+						pattern="dd/MM/yyyy" maxdate="#{pedidoVendaBean.dataAtual}"
+						required="true" />
+
 				</h:panelGrid>
+
+				<p:blockUI block="itemVenda" widgetVar="blockItemVenda"
+					blocked="true" />
+					
+			</p:panel>
+		</h:form>
+		<!-- Final Panel de pedidoVenda*********************************************************** -->
+
+		<h:form id="itemVenda">
+			<p:panel header="Carrinho de compra" scrollable="true"
+				scrollHeight="300" style="width:100%" resizableColumns="true"
+				lazy="true">
+
+				<!-- Inicio DataTable de itemVenda*********************************************************** -->
+				<p:dataTable id="tabelaItemVenda" var="itemVenda"
+					value="#{itemVendaBean.itensVenda}"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+					paginator="true" paginatorPosition="bottom" rows="10"
+					style="margin-bottom:20px" scrollable="true">
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Cliente" />
+						</f:facet>
+						<h:outputText
+							value="#{itemVenda.produtoItemVenda.descricaoProduto}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Quantidade" />
+						</f:facet>
+						<h:outputText value="#{itemVenda.quantidadeItemVenda}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Valor: " />
+						</f:facet>
+						<h:outputText value="#{itemVenda.valorItemCompra}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Data cadastro" />
+						</f:facet>
+						<h:outputText value="#{itemVenda.dataCadastroItemVenda}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Excluir" />
+						</f:facet>
+						<p:commandButton icon="ui-icon-closethick" update="@form"
+							actionListener="#{itemVendaBean.prepararModel(itemVenda)}"
+							oncomplete="PF('dialogExcluirItemVenda').show();" />
+						<p:confirmDialog message="Deseja realmente excluir este item?"
+							widgetVar="dialogExcluirItemVenda">
+							<p:commandButton value="Sim" action="#{itemCompraBean.excluir}"
+								oncomplete="PF('dialogExcluirItemCompra').hide();"
+								update="itemVenda" />
+							<p:commandButton value="Não"
+								oncomplete="PF('dialogExcluirItemVenda').hide();" />
+						</p:confirmDialog>
+					</p:column>
+				</p:dataTable>
+				<!-- Final DataTable de itemVenda*********************************************************** -->
+
+				<p:commandButton value="Adicionar item" id="cadastrarItemVenda"
+					styleClass="ui-priority-primary"
+					oncomplete="PF('dialogCadastroItemVenda').show();"
+					actionListener="#{pedidoVendaBean.resgataUltimoRegistro}"
+					immediate="true" />
+
+				<p:confirmDialog widgetVar="dialogCadastroItemVenda"
+					header="Novo item"
+					message="Preencha todos os campos marcados com *.">
+
+
+					<!-- Inicio cadastro de compra*********************************************************** -->
+					<h:panelGrid columns="2" cellpadding="5">
+						<p:outputLabel for="produto" value="Produto: " />
+						<p:selectOneMenu id="produto"
+							value="#{itemVendaBean.itemVenda.produtoItemVenda}"
+							converter="produtoConverter">
+							<f:selectItem itemLabel="Selecione..." itemValue="#{null}" />
+							<f:selectItems value="#{itemVendaBean.produtos}" var="produto"
+								itemLabel="#{produto.descricaoProduto}" itemValue="#{produto}" />
+						</p:selectOneMenu>
+
+						<p:outputLabel for="quantidade" value="Quantidade: " />
+						<p:inputText id="quantidade" type="number" title="Quantidade"
+							required="true" requiredMessage="Preencha o campo quantidade"
+							value="#{itemVendaBean.itemVenda.quantidadeItemVenda}">
+						</p:inputText>
+
+						<p:outputLabel for="valor" value="Valor: " />
+						<p:inputText id="valor" type="text" title="Valor: "
+							required="true" requiredMessage="Preencha o campo valor"
+							value="#{itemVendaBean.itemVenda.valorItemCompra}">
+						</p:inputText>
+					</h:panelGrid>
+					<!-- Final cadastro de venda*********************************************************** -->
+
+					<p:commandButton value="Salvar"
+						action="#{itemVendaBean.salvar(pedidoVenda)}"
+						update="itemVenda" icon="ui-icon-disk" id="salvar"
+						oncomplete="PF('dialogCadastroItemVenda').hide();">
+						<f:setPropertyActionListener
+							target="#{itemVendaBean.itemVenda.pedidoItemVenda}"
+							value="#{pedidoVendaBean.ultimoPedido}" />
+					</p:commandButton>
+
+					<p:commandButton value="Cancelar"
+						oncomplete="PF('dialogCadastroItemVenda').hide();" />
+				</p:confirmDialog>
+
 			</p:panel>
 		</h:form>
 	</ui:define>

@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import br.com.pesadao.dao.ClienteDao;
 import br.com.pesadao.model.Usuario;
 import br.com.pesadao.model.Usuarios;
 
@@ -50,7 +51,7 @@ public class LoginBean {
 			menssagem.setSeverity(FacesMessage.SEVERITY_ERROR);
 			context.addMessage(null, menssagem);
 		}
-
+		
 		return null;
 	}
 
