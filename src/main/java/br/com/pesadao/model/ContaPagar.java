@@ -6,6 +6,7 @@ package br.com.pesadao.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,7 +26,7 @@ public class ContaPagar implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -8121498291146302331L;
 	private Integer id;
 	private PedidoCompra pedidoContaPagar;
 	private double valorContaPagar;
@@ -93,6 +94,7 @@ public class ContaPagar implements Serializable {
 	/**
 	 * @return the valorContaPagar
 	 */
+	@Column(columnDefinition = "DOUBLE DEFAULT 0")
 	public double getValorContaPagar() {
 		return valorContaPagar;
 	}
@@ -108,6 +110,7 @@ public class ContaPagar implements Serializable {
 	/**
 	 * @return the descricaoContaPagar
 	 */
+	@Column(columnDefinition = "VARCHAR(255) NULL DEFAULT 'Conta referente a produto já cadastrado'")
 	public String getDescricaoContaPagar() {
 		return descricaoContaPagar;
 	}

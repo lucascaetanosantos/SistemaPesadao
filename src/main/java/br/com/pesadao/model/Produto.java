@@ -6,6 +6,7 @@ package br.com.pesadao.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,7 +24,7 @@ public class Produto implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -7478185936635932942L;
+	private static final long serialVersionUID = 2772573434436068129L;
 	private Integer id;
 	private Date dataCadastroProduto = new Date();
 	private String descricaoProduto;
@@ -50,17 +51,13 @@ public class Produto implements Serializable {
 	 * @param status
 	 * @param lastUpdate
 	 */
-	public Produto(Integer id, Date dataCadastroProduto, String descricaoProduto, String marcaProduto,
-			String composicaoProduto, String corProduto, boolean active, Date lastUpdate) {
+	public Produto(String descricaoProduto, String marcaProduto,
+			String composicaoProduto, String corProduto) {
 		super();
-		this.id = id;
-		this.dataCadastroProduto = dataCadastroProduto;
 		this.descricaoProduto = descricaoProduto;
 		this.marcaProduto = marcaProduto;
 		this.composicaoProduto = composicaoProduto;
 		this.corProduto = corProduto;
-		this.active = active;
-		this.lastUpdate = lastUpdate;
 	}
 
 	/**
@@ -153,6 +150,7 @@ public class Produto implements Serializable {
 	/**
 	 * @return the active
 	 */
+	@Column(columnDefinition = "INT DEFAULT 1")
 	public boolean isActive() {
 		return active;
 	}

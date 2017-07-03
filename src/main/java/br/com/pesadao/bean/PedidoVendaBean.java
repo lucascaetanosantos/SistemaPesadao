@@ -44,9 +44,8 @@ public class PedidoVendaBean {
 		new PedidoVendaDao().salvar(pedidoVenda);
 		pedidosVenda = new PedidoVendaDao().listarPedidosVenda();
 		prepararModel(pedidoVenda);
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pedido cadastrado com sucesso!! "));
-		return "pedidovenda";
-
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Pedido cadastrado com sucesso!!"));
+		return "venda";
 	}
 	
 	public void prepararModel(PedidoVenda pedidoVenda) {
@@ -57,12 +56,12 @@ public class PedidoVendaBean {
 		return new SimpleDateFormat("dd/MM/yyyy").format(new Date());
 	}
 	
-	public void resgataUltimoRegistro(){
-		for(PedidoVenda ped : pedidosVenda){
+	public void resgataUltimoRegistro() {
+		for (PedidoVenda ped : pedidosVenda) {
 			setUltimoPedido(ped);
 		}
 	}
-	
+
 	public PedidoVenda getUltimoPedido() {
 		return ultimoPedido;
 	}

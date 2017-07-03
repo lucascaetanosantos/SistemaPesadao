@@ -5,7 +5,7 @@
 	id="WebApp_ID" version="3.1">
 	<display-name>SistemaPesadao</display-name>
 	<welcome-file-list>
-		<welcome-file>login.xhtml</welcome-file>
+		<welcome-file>index.xhtml</welcome-file>
 	</welcome-file-list>
 	<context-param>
 		<param-name>primefaces.THEME</param-name>

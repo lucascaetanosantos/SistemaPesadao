@@ -7,15 +7,15 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import br.com.pesadao.dao.ClienteDao;
 import br.com.pesadao.model.Usuario;
 import br.com.pesadao.model.Usuarios;
-
 
 @ManagedBean
 @SessionScoped
 public class LoginBean {
 
-	private br.com.pesadao.model.Usuario usuario = new Usuario();
+	Usuario usuario = new Usuario();
 
 	private String nomeUsuario;
 	private String senha;
@@ -51,7 +51,7 @@ public class LoginBean {
 			menssagem.setSeverity(FacesMessage.SEVERITY_ERROR);
 			context.addMessage(null, menssagem);
 		}
-
+		
 		return null;
 	}
 
@@ -59,12 +59,12 @@ public class LoginBean {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return "/login?faces-redirect=true";
 	}
-
+	
 	public String prepararAcesso() {
 		this.usuario.setNome(this.nomeUsuario);
 		this.usuario.setDataLogin(new Date());
 		this.loggedIn = true;
-		return "cliente?faces-redirect=true";
+		return "index?faces-redirect=true";
 	}
 
 	public boolean isLoggedIn() {

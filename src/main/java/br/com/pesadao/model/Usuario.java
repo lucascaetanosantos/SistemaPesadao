@@ -23,7 +23,7 @@ public class Usuario implements Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -8408527859267750579L;
+	private static final long serialVersionUID = -8316104023229648642L;
 	private Integer id;
 	private String nome;
 	private Date dataLogin = new Date();

@@ -26,7 +26,8 @@ import br.com.pesadao.model.Usuarios;
 public class AutorizacaoFilter implements Filter {
 
 	@Override
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+			throws IOException, ServletException {
 
 		LoginBean loginBean = (LoginBean) ((HttpServletRequest) request).getSession().getAttribute("loginBean");
 		String contextPath = ((HttpServletRequest) request).getContextPath();
@@ -40,22 +41,21 @@ public class AutorizacaoFilter implements Filter {
 			((HttpServletResponse) response).sendRedirect(contextPath + "/login.xhtml");
 
 		} else if (loginBean.getUsuarios() == Usuarios.ATENDENTE
-				&& (!(endereco.contains("venda") || endereco.contains("index") || endereco.contains("restrito")
-						|| endereco.contains("list") || endereco.contains("pedido_template"))
-						|| endereco.contains("forn"))) {
-			((HttpServletResponse) response).sendRedirect(contextPath + "/acessorestrito_template.xhtml");
+				&& (!(endereco.contains("venda") || endereco.contains("index") || endereco.contains("restrito")))) {
+			((HttpServletResponse) response).sendRedirect(contextPath + "/acessorestrito.xhtml");
 
 		} else if (loginBean.getUsuarios() == Usuarios.CADASTRANTE
-				&& !(endereco.contains("cad") || endereco.contains("index") || endereco.contains("restrito"))) {
-			((HttpServletResponse) response).sendRedirect(contextPath + "/acessorestrito_template.xhtml");
+				&& !(endereco.contains("cliente") || endereco.contains("produto") || endereco.contains("fornecedor")
+						|| endereco.contains("index") || endereco.contains("restrito"))) {
+			((HttpServletResponse) response).sendRedirect(contextPath + "/acessorestrito.xhtml");
 
 		} else if (loginBean.getUsuarios() == Usuarios.COORDENADORDECOMPRA
 				&& !(endereco.contains("compra") || endereco.contains("index") || endereco.contains("restrito"))) {
-			((HttpServletResponse) response).sendRedirect(contextPath + "/acessorestrito_template.xhtml");
+			((HttpServletResponse) response).sendRedirect(contextPath + "/acessorestrito.xhtml");
 
 		} else if (loginBean.getUsuarios() == Usuarios.COORDENADORFINANCEIRO
 				&& !(endereco.contains("conta") || endereco.contains("index") || endereco.contains("restrito"))) {
-			((HttpServletResponse) response).sendRedirect(contextPath + "/acessorestrito_template.xhtml");
+			((HttpServletResponse) response).sendRedirect(contextPath + "/acessorestrito.xhtml");
 
 		}
 

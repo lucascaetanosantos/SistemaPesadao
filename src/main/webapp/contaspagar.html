@@ -5,107 +5,41 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-	<ui:define name="titulo"> Cliente</ui:define>
+	<ui:define name="titulo"> Contas a Pagar</ui:define>
 
 	<ui:define name="principal">
 		<p:panel>
 
-			<h:form id="cadastraCliente">
+			<h:form id="cadastraContasPagar">
 				<p:growl id="growl" />
-				
-				<p:commandButton value="Cadastrar cliente" id="cadastrarCliente"
-					styleClass="ui-priority-primary"
-					oncomplete="PF('dialogCadastroCliente').show();" />
 
-				<p:confirmDialog widgetVar="dialogCadastroCliente"
-					header="Cadastrar Cliente"
+				<p:commandButton value="Cadastrar contas a pagar"
+					id="cadastrarContasPagar" styleClass="ui-priority-primary"
+					oncomplete="PF('dialogCadastroContasPagar').show();" />
+
+				<p:confirmDialog widgetVar="dialogCadastroContasPagar"
+					header="Cadastrar Contas a pagar"
 					message="Preencha todos os campos marcados com *.">
-					
+
 					<p:scrollPanel style="height:400px; width: 500px;">
 						<h:panelGrid columns="2" cellpadding="5"
-							id="painelCadastraCliente">
-							
-							<p:outputLabel for="nome" value="Nome: " />
-							<p:inputText id="nome" type="text" title="Nome" required="true"
-								requiredMessage="Preencha o campo Nome."
-								value="#{clienteBean.cliente.nomeCliente}">
-							</p:inputText>
+							id="painelCadastraContasPagar">
 
-							<p:outputLabel for="sexo" value="Sexo: " />
-							<p:selectOneRadio id="sexo" required="true"
-								requiredMessage="O sexo deve ser informado"
-								value="#{clienteBean.cliente.sexoCliente}">
-								<f:selectItem itemLabel="Masculino" itemValue="MASCULINO"></f:selectItem>
-								<f:selectItem itemLabel="Feminino" itemValue="FEMININO"></f:selectItem>
-							</p:selectOneRadio>
+							<p:outputLabel for="descricao" value="Descrição: " />
+							<p:inputTextarea id="descricao" type="text" title="Descricao"
+								required="true" requiredMessage="Preencha o campo Descrição."
+								value="#{contaPagarBean.contaPagar.descricaoContaPagar}" />
 
-							<p:outputLabel for="idade" value="Idade: " />
-							<p:inputText id="idade" type="text" title="Idade" required="true"
-								requiredMessage="Preencha o campo idade."
-								value="#{clienteBean.cliente.idadeCliente}">
-							</p:inputText>
+							<p:outputLabel for="valor" value="Valor: " />
+							<p:inputNumber id="valor" type="text" title="Valor"
+								required="true" requiredMessage="Preencha o campo valor*"
+								value="#{contaPagarBean.contaPagar.valorContaPagar}" />
 
-							<p:outputLabel for="cpf" value="CPF: " />
-							<p:inputMask id="cpf" mask="999.999.999-99" title="CPF"
-								required="true" requiredMessage="Preencha o campo CPF."
-								value="#{clienteBean.cliente.cpfCliente}">
-							</p:inputMask>
-
-							<p:outputLabel for="estado" value="Estado: "></p:outputLabel>
-							<p:selectOneMenu id="estado"
-								value="#{clienteBean.cliente.ufCliente}" required="true"
-								requiredMessage="Informe o Estado: ">
-								<f:selectItem itemLabel="Selecione..." itemValue="#{null}" />
-								<f:selectItems value="#{clienteBean.estados}" var="estado"
-									itemLabel="#{estado.label}" itemValue="#{estado}" />
-							</p:selectOneMenu>
-
-							<p:outputLabel for="cidade" value="Cidade: " />
-							<p:inputText id="cidade" type="text" title="Cidade"
-								required="true" requiredMessage="Preencha o campo cidade."
-								value="#{clienteBean.cliente.cidadeCliente}">
-							</p:inputText>
-
-							<p:outputLabel for="bairro" value="Bairro: " />
-							<p:inputText id="bairro" type="text" title="Bairro"
-								required="true" requiredMessage="Preencha o campo bairro."
-								value="#{clienteBean.cliente.bairroCliente}">
-							</p:inputText>
-
-							<p:outputLabel for="endereco" value="Endereço : " />
-							<p:inputText id="endereco" type="text" title="Endereço"
-								required="true" requiredMessage="Preencha o campo endereço."
-								value="#{clienteBean.cliente.enderecoCliente}">
-							</p:inputText>
-
-							<p:outputLabel for="telefone" value="Telefone: " />
-							<p:inputMask id="telefone" mask="(99) 9999-9999" title="Telefone"
-								required="true" requiredMessage="Preencha o Campo telefone."
-								value="#{clienteBean.cliente.telefoneCliente}">
-							</p:inputMask>
-
-							<p:outputLabel for="celular" value="Celular: " />
-							<p:inputMask id="celular" mask="(99) 9 9999-9999" title="Celular"
-								required="true" requiredMessage="Preencha o Campo celular."
-								value="#{clienteBean.cliente.celularCliente}">
-							</p:inputMask>
-
-							<p:outputLabel for="email" value="E-mail: " />
-							<p:inputText id="email" type="text" title="Email*"
-								required="true" requiredMessage="Preencha o campo e-mail."
-								value="#{clienteBean.cliente.emailCliente}">
-							</p:inputText>
-
-							<p:outputLabel for="cadastro" value="Data de Cadastro: " />
-							<p:calendar id="cadastro"
-								value="#{clienteBean.cliente.dataCadastroCliente}"
-								pattern="dd/MM/yyyy" maxdate="#{clienteBean.dataAtual}"
-								required="true" />
 						</h:panelGrid>
 					</p:scrollPanel>
 					<p:commandButton value="Reset" type="reset"
-						update="listaClientes cadastraCliente"
-						actionListener="clienteBean.limpar" />
+						update="listaContasPagar cadastraContasPagar"
+						actionListener="#{contaPagarBean.limpar}" />
 
 					<p:commandButton value="Salvar" action="#{clienteBean.salvar}"
 						update="listaClientes cadastraCliente" icon="ui-icon-disk"
@@ -125,7 +59,7 @@
 				<p:dataTable id="tableCliente" var="cliente"
 					value="#{clienteBean.clientes}"
 					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
-					paginator="true" paginatorPosition="bottom" rows="5"
+					paginator="true" paginatorPosition="bottom" rows="10"
 					style="margin-bottom:20px">
 
 					<p:column>

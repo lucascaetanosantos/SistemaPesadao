@@ -25,7 +25,7 @@ public class ItemVenda implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -4181598672490902790L;
+	private static final long serialVersionUID = -2831116836301321712L;
 	private Integer id;
 	private Produto produtoItemVenda;
 	private PedidoVenda pedidoItemVenda;

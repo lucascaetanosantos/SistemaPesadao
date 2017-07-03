@@ -4,70 +4,38 @@ import javax.persistence.EntityManager;
 
 public class TriggerDao {
 
-	String trigger;
+	public void todasAsTriggersNecessarias() {
+		String trigger = "CREATE TRIGGER PRODUTO_ESTOQUE AFTER INSERT " + "ON PRODUTO FOR EACH ROW "
+				+ "INSERT INTO ESTOQUE(ESTOQUE.est_produto)" + "VALUES(NEW.id);"
 
-	public void triggerProdutoEstoque() {
-		trigger = "CREATE TRIGGER PRODUTO_ESTOQUE AFTER INSERT ON PRODUTO FOR EACH ROW "
-				+ "INSERT INTO ESTOQUE(estoque.est_descricao, estoque.est_produto) "
-				+ "VALUES(produto.pro_nome, produto.pro_id);";
+				+ "CREATE TRIGGER ITEMCOMPRA_CONTAPAGAR AFTER INSERT" + "ON ITEMCOMPRA FOR EACH ROW"
+				+ "UPDATE contapagar SET contapagar.valorContaPagar = contapagar.valorContaPagar +"
+				+ "(NEW.quantidadeItemCompra * NEW.valorItemCompra)"
+				+ "WHERE contapagar.pedidoContaPagar_id = NEW.pedidoItemCompra_id;"
 
-		EntityManager entityManager = JPAUtil.getEntityManager();
-		entityManager.getTransaction().begin();
-		entityManager.merge(trigger);
-		entityManager.getTransaction().commit();
-		entityManager.close();
-	}
+				+ "CREATE TRIGGER ITEMCOMPRA_ESTOQUE AFTER INSERT" + "ON ITEMCOMPRA FOR EACH ROW"
+				+ "UPDATE ESTOQUE SET estoque.quantidadeEstoque = ESTOQUE.quantidadeEstoque +"
+				+ "NEW.quantidadeItemCompra, ESTOQUE.totalEstoque = ESTOQUE.totalEstoque +"
+				+ "(NEW.quantidadeItemCompra * NEW.valorItemCompra)"
+				+ "WHERE NEW.produtoItemCompra_id = estoque.produtoEstoque_id;"
 
-	public void triggerPedidoVenda() {
-		trigger = "CREATE TRIGGER PEDIDOVENDA_CONTASRECEBER AFTER INSERT ON PEDIDOVENDA FOR EACH ROW "
-				+ "INSERT INTO CONTASRECEBER(contasreceber.rec_pedidoVenda)" + "VALUES (pedidovenda.ven_id);";
-		
-		EntityManager entityManager = JPAUtil.getEntityManager();
-		entityManager.getTransaction().begin();
-		entityManager.merge(trigger);
-		entityManager.getTransaction().commit();
-		entityManager.close();
-	}
+				+ "CREATE TRIGGER PEDIDOCOMPRA_CONTAPAGAR AFTER INSERT" + "ON PEDIDOCOMPRA FOR EACH ROW"
+				+ "INSERT INTO contapagar(contapagar.pedidoContaPagar_id) VALUES (NEW.id);"
 
-	public void triggerPedidoCompra() {
-		trigger = "CREATE TRIGGER PEDIDOCOMPRA_CONTASPAGAR AFTER INSERT ON PEDIDOVENDA FOR EACH ROW"
-				+ "DECLARE contador TINYINT DEFAULT 0;" + " WHILE contador < pedidovenda.pec_parcelaPedido DO"
-				+ "INSERT INTO contaspagar(contaspagar.pag_pedidoCompra, contaspagar.pag_parcela)"
-				+ "VALUES (pedidovenda.pec_id, pedidovenda.pec_parcelaPedido)	SET contador = contador + 1;"
-				+ "END WHILE;";
-		
-		EntityManager entityManager = JPAUtil.getEntityManager();
-		entityManager.getTransaction().begin();
-		entityManager.merge(trigger);
-		entityManager.getTransaction().commit();
-		entityManager.close();
-	}
+				+ "CREATE TRIGGER ITEMVENDA_CONTARECEBER AFTER INSERT" + "ON ITEMVENDA FOR EACH ROW"
+				+ "UPDATE contareceber SET contareceber.valorContaReceber = contareceber.valorContaReceber +"
+				+ "(NEW.quantidadeItemVenda * itemvenda.valorItemCompra)"
+				+ "WHERE contareceber.pedidoContaReceber_id = NEW.pedidoItemVenda_id;"
 
-	public void triggerItemVenda() {
-		trigger = "CREATE TRIGGER ITEMVENDA_CONTASRECEBER AFTER INSERT ON ITEMVENDA FOR EACH ROW"
-				+ "UPDATE contasreceber SET contasreceber.rec_valor = contasreceber.rec_valor + "
-				+ "(itemvenda.itv_qtde * itemvenda.itv_valorUnitario) "
-				+ "WHERE contasreceber.rec_pedidoVenda = new.itv_pedidoVenda;"
-				+ "UPDATE estoque SET estoque.est_qtde = estoque.est_qtde - itemvenda.itv_qtde,"
-				+ "estoque.est_valorTotal = estoque.est_valorTotal - (itemvenda.itv_valorUnitario * itemvenda.itv_qtde)"
-				+ "WHERE estoque.est_produto = itemvenda.itv_produto;";
-		
-		EntityManager entityManager = JPAUtil.getEntityManager();
-		entityManager.getTransaction().begin();
-		entityManager.merge(trigger);
-		entityManager.getTransaction().commit();
-		entityManager.close();
-	}
+				+ "CREATE TRIGGER ITEMVENDA_ESTOQUE AFTER INSERT" + "ON ITEMVENDA FOR EACH ROW"
+				+ "UPDATE ESTOQUE SET estoque.quantidadeEstoque = ESTOQUE.quantidadeEstoque +"
+				+ "NEW.quantidadeItemVenda, ESTOQUE.totalEstoque = ESTOQUE.totalEstoque +"
+				+ "(NEW.quantidadeItemVenda * itemvenda.valorItemCompra)"
+				+ "WHERE NEW.produtoItemVenda_id = estoque.produtoEstoque_id;"
 
-	public void triggerItemCompra() {
-		trigger = "CREATE TRIGGER ITEMCOMPRA_CONTASPAGAR AFTER INSERT" + "ON ITEMCOMPRA FOR EACH ROW"
-				+ "UPDATE contaspagar SET contaspagar.pag_valorTotal = contaspagar.pag_valorTotal +"
-				+ "((NEW.itc_quantidade * itemcompra.itc_valorUnitarioCompra) / contaspagar.pag_parcela)"
-				+ "WHERE contaspagar.pag_pedidoCompra = itemcompra.itc_pedido;"
-				+ "UPDATE estoque SET estoque.est_qtde = estoque.est_qtde + itemcompra.itc_quantidade,"
-				+ "estoque.est_valorTotal = estoque.est_valorTotal + (itemcompra.itc_valorUnitarioCompra * itemcompra.itc_quantidade)"
-				+ "WHERE estoque.est_produto = itemcompra.itc_produto;";
-		
+				+ "CREATE TRIGGER PEDIDOVENDA_CONTARECEBER AFTER INSERT" + "ON PEDIDOVENDA FOR EACH ROW"
+				+ "INSERT INTO contareceber(contareceber.pedidoContaReceber_id) VALUES (NEW.id);";
+
 		EntityManager entityManager = JPAUtil.getEntityManager();
 		entityManager.getTransaction().begin();
 		entityManager.merge(trigger);

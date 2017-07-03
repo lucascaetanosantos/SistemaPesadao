@@ -9,8 +9,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import br.com.pesadao.model.ItemCompra;
-import br.com.pesadao.model.ItemVenda;
-import br.com.pesadao.model.PedidoCompra;
 
 
 /**
@@ -28,9 +26,9 @@ public class ItemCompraDao {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<ItemCompra> listarItensCompra(Integer pedido) {
+	public List<ItemCompra> listarItensCompra(Integer pedidoCompra) {
 		EntityManager entityManager = JPAUtil.getEntityManager();
-		Query query = entityManager.createQuery("from ItemCompra where pedidoItemCompra="+pedido);
+		Query query = entityManager.createQuery("from ItemCompra where pedidoItemCompra_id="+pedidoCompra);
 		return query.getResultList();
 	}
 	

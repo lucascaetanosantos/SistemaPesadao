@@ -38,12 +38,14 @@
 
 				<p:blockUI block="itemVenda" widgetVar="blockItemVenda"
 					blocked="true" />
+<<<<<<< HEAD
+					
 			</p:panel>
 		</h:form>
 		<!-- Final Panel de pedidoVenda*********************************************************** -->
 
 		<h:form id="itemVenda">
-			<p:panel header="Carrinho de venda" scrollable="true"
+			<p:panel header="Carrinho de compra" scrollable="true"
 				scrollHeight="300" style="width:100%" resizableColumns="true"
 				lazy="true">
 
@@ -56,7 +58,7 @@
 
 					<p:column>
 						<f:facet name="header">
-							<h:outputText value="Produto" />
+							<h:outputText value="Cliente" />
 						</f:facet>
 						<h:outputText
 							value="#{itemVenda.produtoItemVenda.descricaoProduto}" />
@@ -73,7 +75,7 @@
 						<f:facet name="header">
 							<h:outputText value="Valor: " />
 						</f:facet>
-						<h:outputText value="#{itemVenda.valorItemVenda}" />
+						<h:outputText value="#{itemVenda.valorItemCompra}" />
 					</p:column>
 
 					<p:column>
@@ -92,8 +94,8 @@
 							oncomplete="PF('dialogExcluirItemVenda').show();" />
 						<p:confirmDialog message="Deseja realmente excluir este item?"
 							widgetVar="dialogExcluirItemVenda">
-							<p:commandButton value="Sim" action="#{itemVendaBean.excluir}"
-								oncomplete="PF('dialogExcluirItemVenda').hide();"
+							<p:commandButton value="Sim" action="#{itemCompraBean.excluir}"
+								oncomplete="PF('dialogExcluirItemCompra').hide();"
 								update="itemVenda" />
 							<p:commandButton value="Não"
 								oncomplete="PF('dialogExcluirItemVenda').hide();" />
@@ -101,7 +103,7 @@
 					</p:column>
 				</p:dataTable>
 				<!-- Final DataTable de itemVenda*********************************************************** -->
-				
+
 				<p:commandButton value="Adicionar item" id="cadastrarItemVenda"
 					styleClass="ui-priority-primary"
 					oncomplete="PF('dialogCadastroItemVenda').show();"
@@ -113,7 +115,7 @@
 					message="Preencha todos os campos marcados com *.">
 
 
-					<!-- Inicio cadastro de venda*********************************************************** -->
+					<!-- Inicio cadastro de compra*********************************************************** -->
 					<h:panelGrid columns="2" cellpadding="5">
 						<p:outputLabel for="produto" value="Produto: " />
 						<p:selectOneMenu id="produto"
@@ -133,12 +135,13 @@
 						<p:outputLabel for="valor" value="Valor: " />
 						<p:inputText id="valor" type="text" title="Valor: "
 							required="true" requiredMessage="Preencha o campo valor"
-							value="#{itemVendaBean.itemVenda.valorItemVenda}">
+							value="#{itemVendaBean.itemVenda.valorItemCompra}">
 						</p:inputText>
 					</h:panelGrid>
 					<!-- Final cadastro de venda*********************************************************** -->
 
-					<p:commandButton value="Salvar" action="#{itemVendaBean.salvar}"
+					<p:commandButton value="Salvar"
+						action="#{itemVendaBean.salvar(pedidoVenda)}"
 						update="itemVenda" icon="ui-icon-disk" id="salvar"
 						oncomplete="PF('dialogCadastroItemVenda').hide();">
 						<f:setPropertyActionListener

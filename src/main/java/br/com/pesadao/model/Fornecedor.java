@@ -6,6 +6,7 @@ package br.com.pesadao.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -25,7 +26,7 @@ public class Fornecedor implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -9146188231625778022L;
+	private static final long serialVersionUID = 3169248106609063597L;
 	private Integer id;
 	private String nomeFornecedor;
 	private String fantasiaFornecedor;
@@ -72,13 +73,12 @@ public class Fornecedor implements Serializable {
 	 * @param active
 	 * @param lastUpdate
 	 */
-	public Fornecedor(Integer id, String nomeFornecedor, String fantasiaFornecedor, String cnpjFornecedor,
+	public Fornecedor(String nomeFornecedor, String fantasiaFornecedor, String cnpjFornecedor,
 			Date dataCadastroFornecedor, String enderecoFornecedor, String bairroFornecedor, String cidadeFornecedor,
 			String complementoFornecedor, String telefonePrincipalFornecedor, String telefoneAlternativoFornecedor,
 			String ieFornecedor, String imFornecedor, Date dataFundacaoFornecedor, Estado ufFornecedor,
-			String emailFornecedor, boolean active, Date lastUpdate) {
+			String emailFornecedor) {
 		super();
-		this.id = id;
 		this.nomeFornecedor = nomeFornecedor;
 		this.fantasiaFornecedor = fantasiaFornecedor;
 		this.cnpjFornecedor = cnpjFornecedor;
@@ -94,8 +94,6 @@ public class Fornecedor implements Serializable {
 		this.dataFundacaoFornecedor = dataFundacaoFornecedor;
 		this.ufFornecedor = ufFornecedor;
 		this.emailFornecedor = emailFornecedor;
-		this.active = active;
-		this.lastUpdate = lastUpdate;
 	}
 
 	/**
@@ -330,6 +328,7 @@ public class Fornecedor implements Serializable {
 	/**
 	 * @return the active
 	 */
+	@Column(columnDefinition = "INT DEFAULT 1")
 	public boolean isActive() {
 		return active;
 	}
