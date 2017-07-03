@@ -43,7 +43,6 @@ public class ItemVendaBean {
 	
 	public void excluir() {
 		new ItemVendaDao().excluir(itemVenda);
-		new ItemVendaDao().salvar(itemVenda);
 		produtos = new ProdutoDao().listarProdutos();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Item excluído com sucesso!"));
 		itensVenda = new ItemVendaDao().listarItensVenda(itemVenda.getPedidoItemVenda().getId());
